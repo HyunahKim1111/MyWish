@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1!b%yfmz(eniz)-9kgq#0b1q1*4!a5az=f7e8j-m@-^(4inrp5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.102','127.0.0.1']
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'mywish_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,6 +119,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
