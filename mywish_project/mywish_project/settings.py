@@ -125,14 +125,8 @@ STATIC_URL = '/static/'
 
 # 프론트 이미지 경로를 위해 추가함
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR,'mywish', 'static'),
 ]
-# 프론트 이미지 경로를 위해 추가함
-
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')

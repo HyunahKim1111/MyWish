@@ -15,7 +15,14 @@
     --text-sub: #333333;
     --green: #108910;
 }
-
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    font-weight: bold;
+}
 .green {
     color: #108910;
 }
@@ -153,17 +160,23 @@ span {
 }
 /* 로그인페이지 */
 .loginWrap {
-    width: 1440px;
     margin: 0 auto;
-    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.login-page {
+    text-align: center;
+}
+.login-page > p {
+    margin: 30px;
 }
 .logo-login > img {
     width: 152px;
     height: 63px;
+    margin: 100px;
 }
-.inputWrap {
-    display: block;
-}
+
 #id-input {
     width: 322px;
     height: 40px;
@@ -171,14 +184,35 @@ span {
     background-color: var(--light-gray);
     color: rgba(51, 51, 51, 50);
     opacity: 50%;
+    border: none;
+    display: block;
 }
 
+input {
+    box-sizing: border-box;
+    padding: 0 0 0 24px;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+input::placeholder {
+    font-size: 16px;
+}
+input::after {
+    border: 3px solid var(--main-color);
+}
+button:active {
+    font-weight: 700;
+    box-shadow: 0 0 2px 0 rgba(83, 22, 3, 0.5);
+}
 #passwordBar {
     width: 322px;
     height: 40px;
     border-radius: 30px;
     background-color: var(--light-gray);
     color: rgba(51, 51, 51, 50);
+    border: none;
+    display: block;
 }
 
 #loginBar {
@@ -187,10 +221,25 @@ span {
     border-radius: 30px;
     background-color: var(--main-color);
     color: #ebc6b6;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+#loginBar:hover {
+    background-color: #555;
+    color: var(--main-color);
 }
 .login-sub {
-    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    /* display: flex; */
 }
-.login-sub > p {
-    color: #da3232;
+.login-sub > span {
+    color: #555;
+    font-size: bold;
+    text-align: center;
+    margin: 15px;
 }
+/* .login-sub > span::after {
+    content: '  | ';
+} */
