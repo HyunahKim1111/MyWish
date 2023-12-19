@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이위시 페이지</title>
-</head>
-<body>
-    <h1>마이위시 페이지를 꾸며주세요.</h1>
-</body>
+{% load static %}
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'mywish/css/style.css' %}" type="text/css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+    </head>
+    <body>
+        <div id="wrap">
+            <!-- 위시 추가 버튼 영역 -->
+            <div class="plusIcon">
+                <img src="{% static 'mywish/images/plus-circle.svg' %}" alt="lightningIcon" />
+                <p class="wishPlus">나의 위시로 등록하기</p>
+            </div>
+            <!-- 위시 추가 버튼 영역 -->
+            <div id="container">
+                <img src="{% static 'mywish/images/zap.svg' %}" alt="lightningIcon" />
+                <div>
+                    <p class="wishCon green">유럽여행</p>
+
+                    <p class="wishCon">5:10pm – 6:10pm</p>
+                </div>
+                <div><input type="checkbox" class="checkbox" /></div>
+            </div>
+        </div>
+    </body>
 </html>

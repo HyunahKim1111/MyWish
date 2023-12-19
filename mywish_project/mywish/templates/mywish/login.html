@@ -1,11 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 페이지</title>
-</head>
-<body>
-    <h1>로그인 페이지 입니다.</h1>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'mywish/css/style.css' %}" type="text/css" />
+        <title>로그인 페이지</title>
+    </head>
+    <body>
+        <div id="loginWrap">
+            <div class="logo-login"><img src="{% static 'mywish/images/logo.svg' %}" alt="logo" /></div>
+            <!-- 프로필 이미지 들어갈 곳 -->
+            <div class="login-profile"><img src="{% static 'mywish/images/login-icon.svg' %}" alt="" /></div>
+            <p>로그인해주세요</p>
+            <input type="box" id="id-input" placeholder="ID" />
+            <input type="text" id="password-input" placeholder="Password" />
+            <input type="text" id="login-input" placeholder="로그인" />
+            <div class="login-sub">
+                <p>아이디찾기</p>
+                |
+                <p>비밀번호 찾기</p>
+                |
+                <p>회원가입</p>
+            </div>
+        </div>
+    </body>
 </html>

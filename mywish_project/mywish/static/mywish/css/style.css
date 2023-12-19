@@ -1,0 +1,139 @@
+@charset 'utf-8';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+:root {
+    --main-color: #eb4600;
+    --light-gray: #d9d9d9;
+    --text-main: #555;
+    --text-sub: #333333;
+    --green: #108910;
+}
+/* icon color */
+.green {
+    color: #108910;
+}
+body {
+    position: relative;
+}
+/* index page */
+#wrap {
+    width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+.textWrap {
+    margin: 0 5%;
+}
+h1 {
+    margin-top: 20px;
+    font-size: 50px;
+}
+h5 {
+    margin-top: 100px;
+    font-size: 24px;
+}
+span {
+    color: var(--main-color);
+}
+.imgWrap {
+    display: flex;
+}
+.imgWrap > img {
+    margin: 41px;
+    width: 413px;
+    height: 413px;
+    border-radius: 67px;
+    background-image: url('../images/bruce-mars-gJtDg6WfMlQ-unsplash.jpg') cover no-repeat;
+}
+
+/* index page */
+
+/* 위시 추가 버튼 */
+.plusIcon {
+    display: flex;
+    margin: 85px;
+    width: 287px;
+    margin: 85px auto;
+}
+.plusIcon > img {
+    width: 33px;
+    height: 33px;
+    margin-right: 15px;
+}
+.wishPlus {
+    font-size: 24px;
+    color: #555;
+}
+/* 컨텐츠 박스 */
+#container {
+    border: 1.5px solid #343538;
+    background: #f6f7f8;
+    width: 588px;
+    height: 117px;
+    border-radius: 18px;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: border-box;
+    padding: 32px;
+}
+#container {
+    display: flex;
+}
+#container > img {
+    width: 37.5px;
+    height: 37.2px;
+    top: 50%;
+}
+.wishCon {
+    font-size: 21px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.checkbox {
+    width: 27px;
+    height: 27px;
+    border: 1px solid var(--main-color);
+}
+/* 로그인페이지 */
+.loginWrap {
+    margin: 0 auto;
+    position: absolute;
+    justify-content: center;
+}
+.logo-login > img {
+    width: 152px;
+    height: 63px;
+}
+#id-input {
+    width: 322px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: var(--light-gray);
+    color: rgba(51, 51, 51, 50);
+    opacity: 50%;
+}
+
+#password-input {
+    width: 322px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: var(--light-gray);
+    color: rgba(51, 51, 51, 50);
+}
+
+#login-input {
+    width: 322px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: var(--main-color);
+    color: #ebc6b6;
+}
+.login-sub {
+    display: flex;
+}
