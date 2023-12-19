@@ -9,6 +9,7 @@
         <title>메인페이지</title>
     </head>
     <body>
+    {% include 'mywish/navbar.html'%}
         <div id="wrap">
             <li>
                 <img src="{% static 'mywish/images/logo.svg' %}" alt="logo" class="logo" />
@@ -55,6 +56,8 @@
             </div>
         </div>
 
+{% include 'mywish/footer.html' %}
+
         <!-- script -->
         <script>
             var video = document.getElementById('mainVideo');
@@ -63,13 +66,4 @@
             });
         </script>
     </body>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인페이지</title>
-    <link rel="stylesheet" href="{% static 'mywish/css/main.css' %}" media="screen">
-</head>
-<body>
-    <h1>대문을 만들어주세요</h1>
-</body>
 </html>
