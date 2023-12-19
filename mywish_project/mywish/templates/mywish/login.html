@@ -13,9 +13,11 @@
             <!-- 프로필 이미지 들어갈 곳 -->
             <div class="login-profile"><img src="{% static 'mywish/images/login-icon.svg' %}" alt="" /></div>
             <p>로그인해주세요</p>
-            <input type="box" id="id-input" placeholder="ID" />
-            <input type="password" id="password-input" placeholder="Password" />
-            <input type="button" id="loginBar" />
+            <div class="inputWrap">
+                <input type="box" id="id-input" placeholder="ID" />
+                <input type="password" id="passwordBar" placeholder="Password" />
+                <input type="button" id="loginBar" placeholder="로그인" />
+            </div>
             <div class="login-sub">
                 <p>아이디찾기</p>
                 &nbsp;|&nbsp;

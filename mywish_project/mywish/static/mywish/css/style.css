@@ -19,9 +19,7 @@
 .green {
     color: #108910;
 }
-body {
-    position: relative;
-}
+
 /* animation */
 
 /* index page */
@@ -157,12 +155,14 @@ span {
 .loginWrap {
     width: 1440px;
     margin: 0 auto;
-    position: absolute;
-    justify-content: center;
+    position: relative;
 }
 .logo-login > img {
     width: 152px;
     height: 63px;
+}
+.inputWrap {
+    display: block;
 }
 #id-input {
     width: 322px;
@@ -173,7 +173,7 @@ span {
     opacity: 50%;
 }
 
-#password-input {
+#passwordBar {
     width: 322px;
     height: 40px;
     border-radius: 30px;
@@ -190,4 +190,7 @@ span {
 }
 .login-sub {
     display: flex;
+}
+.login-sub > p {
+    color: #da3232;
 }
