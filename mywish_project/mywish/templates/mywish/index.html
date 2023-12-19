@@ -9,6 +9,7 @@
         <title>메인페이지</title>
     </head>
     <body>
+    {% include 'mywish/navbar.html'%}
         <div id="wrap">
             <li>
                 <img src="{% static 'mywish/images/logo.svg' %}" alt="logo" class="logo" />
@@ -54,6 +55,8 @@
                 </div>
             </div>
         </div>
+
+{% include 'mywish/footer.html' %}
 
         <!-- script -->
         <script>
