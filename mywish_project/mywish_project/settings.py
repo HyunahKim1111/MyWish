@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # allauth로그인 커스텀
+    'widget_tweaks'
 ]
 
 SITE_ID = 1
@@ -130,7 +132,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 # 프론트 이미지 경로를 위해 추가함
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'mywish', 'static'),
+    os.path.join(BASE_DIR,"static"),
 ]
 
 MEDIA_URL = '/media/'
@@ -145,11 +147,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
     # 'allauth' specific authentication methods, such as login by e-mail
-    'allauth.account.auth_mywish.AuthenticationBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 
     #Needed to login by username in Django admin, regardless of 'allauth'
-    'django.contrib.auth.mywish.ModelBackend',
-    
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 LOGIN_REDIRECT_URL = 'index'
