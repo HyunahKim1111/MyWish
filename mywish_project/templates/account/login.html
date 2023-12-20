@@ -3,7 +3,7 @@
 {% load static %}
 {% load widget_tweaks %}
 
-{% block title %}로그인 | hi!restaurant{% endblock title %}
+{% block title %}로그인{% endblock title %}
 
 {% block content %}
 <html lang="ko">
@@ -21,20 +21,30 @@
                 <div class="login-profile"><img src="{% static 'images/login-icon.svg' %}" alt="" /></div>
                 <p>로그인해주세요</p>
                 <div class="inputWrap">
-                    <input type="box" id="id-input" placeholder="ID" />
-                    <input type="password" id="passwordBar" placeholder="Password" />
-                    <button type="button" id="loginBar">로그인</button>
-                </div>
-                <div class="login-sub">
-                    <span><a href="javascript:void(0);">아이디찾기</a></span>
-
-                    <span><a href="javascript:void(0);">비밀번호 찾기</a></span>
-
-                    <span><a href="javascript:void(0);">회원가입</a></span>
+                  <form method="post">{% csrf_token %}
+                    <p><input type="box" name="login" id="id-input" placeholder="ID" autocomplete="username" maxlength="150" required id="id_login"></p>
+                    <p>
+                      <input type="password" id="passwordBar" name="password" placeholder="Password" autocomplete="current-password" required id="id_password">
+                    <button type="submit" id="loginBar">로그인</button>
+                    <p>
+                      <label for="id_remember">아이디저장:</label>
+                      <input type="checkbox" name="remember" id="id_remember">
+                    </p>
+                    <div class="login-sub">
+                      <span><a href="javascript:void(0);">아이디찾기</a></span>
+  
+                      <span><a href="/accounts/password/reset/">비밀번호 찾기</a></span>
+  
+                      <span><a href="/accounts/signup/">회원가입</a></span>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>
-        <script>
+
+
+
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const loginBtn = document.getElementById('loginBar');
 
@@ -47,7 +57,7 @@
                     }
                 });
             });
-        </script>
+        </script> -->
     </body>
 </html>
 {% endblock content %}

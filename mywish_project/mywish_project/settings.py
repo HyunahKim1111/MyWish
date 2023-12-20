@@ -50,17 +50,16 @@ INSTALLED_APPS = [
     'widget_tweaks'
 ]
 
-SITE_ID = 1
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', # csrf 토큰
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'mywish_project.urls'
@@ -152,10 +151,14 @@ AUTHENTICATION_BACKENDS = [
     #Needed to login by username in Django admin, regardless of 'allauth'
     'django.contrib.auth.backends.ModelBackend',
 ]
+SITE_ID = 1
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'mypage'
 # 로그아웃 후 리디렉션할 페이지
 ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 # 로그아웃 버튼 클릭 시 자동 로그아웃
 ACCOUNT_LOGOUT_ON_GET = True
+
+# ACCOUNT_EMAIL_REQUIRED = True 이메일을 반드시 받으려면 추가
+ACCOUNT_EMAIL_VERIFICATIOM = 'none'
 

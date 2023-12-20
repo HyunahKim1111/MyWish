@@ -24,7 +24,6 @@ urlpatterns = [
     
     path('', include('mywish.urls')),
     path('admin/', admin.site.urls),
-
     #allauth 연동 
     path('accounts/',include('allauth.urls')),
 ]
