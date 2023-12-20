@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네비게이션 바</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" />
+</head>
+<body>
+    <h1>네비게이션 바를 만들겁니다.</h1>
+    <div id="wrap">
+        <div class="nav">
+            <div class="logo"></div>
+                
+        </div>
+    </div>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

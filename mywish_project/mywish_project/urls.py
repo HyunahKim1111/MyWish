@@ -21,8 +21,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    
     path('', include('mywish.urls')),
     path('admin/', admin.site.urls),
+
+    #allauth 연동 
+    path('accounts/',include('allauth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
