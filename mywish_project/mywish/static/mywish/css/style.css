@@ -191,3 +191,6 @@ span {
 .login-sub {
     display: flex;
 }
+.login-sub > p{
+    color: rgb(64, 20, 134);
+}
