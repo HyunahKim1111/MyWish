@@ -8,10 +8,18 @@
         <title>풋터</title>
     </head>
     <body>
-        <h1>풋터를 만들어주세요</h1>
         <div id="foot-wrap">
-            <div class="logo"><img src="{% static 'mywish/images/logo.svg' %}" alt="logo" /></div>
-            <div class="foot-con">푸터 내용자리</div>
+            <img src="{% static 'mywish/images/logo.svg' %}" alt="footer-logo" />
+            <div class="foot-inner">
+                <ul class="capds">
+                    <li>이용약관</li>
+                    <li>개인정보처리방침</li>
+                </ul>
+                <ul>
+                    <li>COPYRIGHT © 2024 MYWISH DBA.</li>
+                    <li>TEAM CS <span>김현아 / 정지은</span></li>
+                </ul>
+            </div>
             <div class="family-site">
                 <select name="family" id="family">
                     <option value="#">패밀리 사이트1</option>

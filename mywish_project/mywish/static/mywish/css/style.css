@@ -3,8 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
     list-style: none;
 }
 /* icon color */
@@ -22,12 +21,14 @@ a:visited {
 }
 a:hover {
     font-weight: bold;
+    color: var(--main-color);
 }
 .green {
     color: #108910;
 }
-
-/* animation */
+.orange {
+    color: var(--main-color);
+}
 
 /* index page */
 #wrap {
@@ -66,9 +67,7 @@ h1 {
     margin-top: 150px;
     font-size: 24px;
 }
-span {
-    color: var(--main-color);
-}
+
 .imgWrap {
     display: flex;
     min-width: 1200px;
@@ -109,55 +108,8 @@ span {
 .c9 {
     background-image: url('../images/domino-5RUIYPB5QTY-unsplash.jpg');
 }
-/* index page */
+/* index page 끝 */
 
-/* 위시 추가 버튼 */
-.plusIcon {
-    display: flex;
-    margin: 85px;
-    width: 287px;
-    margin: 85px auto;
-}
-.plusIcon > img {
-    width: 33px;
-    height: 33px;
-    margin-right: 15px;
-}
-.wishPlus {
-    font-size: 24px;
-    color: #555;
-}
-/* 컨텐츠 박스 */
-#container {
-    border: 1.5px solid #343538;
-    background: #f6f7f8;
-    width: 588px;
-    height: 117px;
-    border-radius: 18px;
-    margin: 0 auto;
-    display: flex;
-    box-sizing: border-box;
-    padding: 32px;
-}
-#container {
-    display: flex;
-}
-#container > img {
-    width: 37.5px;
-    height: 37.2px;
-    top: 50%;
-}
-.wishCon {
-    font-size: 21px;
-    margin-left: 20px;
-    font-weight: 500;
-}
-
-.checkbox {
-    width: 27px;
-    height: 27px;
-    border: 1px solid var(--main-color);
-}
 /* 로그인페이지 */
 .loginWrap {
     margin: 0 auto;
@@ -171,7 +123,7 @@ span {
 .login-page > p {
     margin: 30px;
 }
-.logo-login > img {
+.logo-login img {
     width: 152px;
     height: 63px;
     margin: 100px;
@@ -240,6 +192,115 @@ button:active {
     text-align: center;
     margin: 15px;
 }
-/* .login-sub > span::after {
-    content: '  | ';
-} */
+/* 로그인페이지 끝 */
+
+/* -----마이 위시 페이지---- */
+/* 위시 추가 버튼 */
+.plusIcon {
+    display: flex;
+    margin: 85px;
+    width: 287px;
+    margin: 85px auto;
+}
+.plusIcon > img {
+    width: 33px;
+    height: 33px;
+    margin-right: 15px;
+}
+.wishPlus {
+    font-size: 24px;
+    color: #555;
+}
+/* 컨텐츠 박스 */
+#container {
+    border: 1.5px solid #343538;
+    background: #f6f7f8;
+    width: 588px;
+    height: 117px;
+    border-radius: 18px;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: border-box;
+    padding: 32px;
+}
+#container {
+    display: flex;
+}
+#container > img {
+    width: 37.5px;
+    height: 37.2px;
+    top: 50%;
+}
+.wishCon {
+    font-size: 21px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.checkbox {
+    width: 27px;
+    height: 27px;
+    border: 1px solid var(--main-color);
+}
+/* -----마이 위시 페이지 끝---- */
+
+/* nav */
+#navWrap {
+    width: 100%;
+    height: 85px;
+    display: flex;
+    box-sizing: border-box;
+    background: #fff;
+}
+#navWrap a:hover {
+    cursor: pointer;
+}
+.navLogo {
+    position: relative;
+}
+.navLogo img {
+    width: 92px;
+    margin: 25px;
+}
+
+/* footer */
+#foot-wrap {
+    width: 100%;
+    height: 115px;
+    display: flex;
+    margin-top: 50px;
+    box-sizing: border-box;
+    position: relative;
+}
+#foot-wrap img {
+    left: 120px;
+    width: 100px;
+    transform: translate(-50%);
+    position: absolute;
+}
+.foot-inner {
+    left: 50%;
+    height: 46px;
+    box-sizing: border-box;
+    transform: translate(-50%);
+    position: absolute;
+}
+
+.foot-inner > ul {
+    display: flex;
+}
+.foot-inner > ul li {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 5px 10px;
+    color: #333;
+}
+.foot-inner > ul li > span {
+    font-weight: 600;
+    color: #333;
+}
+#family {
+    position: absolute;
+    right: 60px;
+    transform: translate(-50%);
+}
