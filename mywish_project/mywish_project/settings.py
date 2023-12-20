@@ -143,7 +143,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # allauth 
-
 AUTHENTICATION_BACKENDS = [
     # 'allauth' specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -162,3 +161,5 @@ ACCOUNT_LOGOUT_ON_GET = True
 # ACCOUNT_EMAIL_REQUIRED = True 이메일을 반드시 받으려면 추가
 ACCOUNT_EMAIL_VERIFICATIOM = 'none'
 
+# 유투브 DATA API 인증 KEY
+YOUTUBE_DATA_API_KEY = 'AIzaSyCJnNoEtvpdbD61jen2NCdbbqQaMnPp7Zc'
