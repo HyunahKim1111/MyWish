@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'mywish/css/style.css' %}" type="text/css" />
+        <title>로그인 페이지</title>
+    </head>
+    <body>
+        <div id="loginWrap">
+            <div class="login-page">
+                <div class="logo-login"><img src="{% static 'mywish/images/logo.svg' %}" alt="logo" /></div>
+                <!-- 프로필 이미지  -->
+                <div class="login-profile"><img src="{% static 'mywish/images/login-icon.svg' %}" alt="" /></div>
+                <p>로그인해주세요</p>
+                <div class="inputWrap">
+                    <input type="box" id="id-input" placeholder="ID" />
+                    <input type="password" id="passwordBar" placeholder="Password" />
+                    <a href="/accounts/login/" type="button" id="loginBar">로그인</a>
+                </div>
+                <div class="login-sub">
+                    <span><a href="javascript:void(0);">아이디찾기</a></span>
+
+                    <span><a href="javascript:void(0);">비밀번호 찾기</a></span>
+
+                    <span><a href="/accounts/signup/">회원가입</a></span>
+                </div>
+                <p>"If you have not created an account yet, then please "
+                    <a href="/accounts/singup/">sing up</a>
+                </p>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const loginBtn = document.getElementById('loginBar');
+
+                loginBtn.addEventListener('click', function () {
+                    if (loginBtn.innerText === '로그인') {
+                        loginBtn.innerText = '로그아웃';
+                        alert('로그인되었습니다.');
+                    } else {
+                        loginBtn.innerText = '로그인';
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
