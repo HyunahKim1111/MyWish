@@ -9,20 +9,38 @@
     </head>
     <body>
         <div id="loginWrap">
-            <div class="logo-login"><img src="{% static 'mywish/images/logo.svg' %}" alt="logo" /></div>
-            <!-- 프로필 이미지 들어갈 곳 -->
-            <div class="login-profile"><img src="{% static 'mywish/images/login-icon.svg' %}" alt="" /></div>
-            <p>로그인해주세요</p>
-            <input type="box" id="id-input" placeholder="ID" />
-            <input type="password" id="password-input" placeholder="Password" />
-            <input type="button" id="loginBar" />
-            <div class="login-sub">
-                <p>아이디찾기</p>
-                &nbsp;|&nbsp;
-                <p>비밀번호 찾기</p>
-                &nbsp;|&nbsp;
-                <p>회원가입</p>
+            <div class="login-page">
+                <div class="logo-login"><img src="{% static 'mywish/images/logo.svg' %}" alt="logo" /></div>
+                <!-- 프로필 이미지  -->
+                <div class="login-profile"><img src="{% static 'mywish/images/login-icon.svg' %}" alt="" /></div>
+                <p>로그인해주세요</p>
+                <div class="inputWrap">
+                    <input type="box" id="id-input" placeholder="ID" />
+                    <input type="password" id="passwordBar" placeholder="Password" />
+                    <button type="button" id="loginBar">로그인</button>
+                </div>
+                <div class="login-sub">
+                    <span><a href="javascript:void(0);">아이디찾기</a></span>
+
+                    <span><a href="javascript:void(0);">비밀번호 찾기</a></span>
+
+                    <span><a href="javascript:void(0);">회원가입</a></span>
+                </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const loginBtn = document.getElementById('loginBar');
+
+                loginBtn.addEventListener('click', function () {
+                    if (loginBtn.innerText === '로그인') {
+                        loginBtn.innerText = '로그아웃';
+                        alert('로그인되었습니다.');
+                    } else {
+                        loginBtn.innerText = '로그인';
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

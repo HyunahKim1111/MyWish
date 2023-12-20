@@ -122,7 +122,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 # 프론트 이미지 경로를 위해 추가함
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'mywish', 'static'),
+    os.path.join(BASE_DIR,'mywish', 'static'),
 ]
 
 MEDIA_URL = '/media/'
