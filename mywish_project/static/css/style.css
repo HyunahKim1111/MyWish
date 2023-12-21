@@ -65,7 +65,10 @@ svg:hover {
     transform: translate(50px, 0);
 }
 /* index page */
-
+body {
+    min-width: 320px;
+    min-height: 480px;
+}
 #wrap {
     width: 1440px;
     /* margin: 0 10%; */
@@ -87,7 +90,14 @@ li {
     left: 100px;
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.4);
-    padding: 10px 50px 10px 10px;
+    padding: 10px 10px 10px 10px;
+}
+.videoTxt p {
+    font-size: 24px;
+    font-weight: bold;
+}
+.videoTitle {
+    font-size: 24px;
 }
 .textWrap {
     margin: 0 10%;
@@ -98,9 +108,6 @@ h1 {
 }
 h5 {
     margin-top: 150px;
-    font-size: 24px;
-}
-.videoTitle {
     font-size: 24px;
 }
 
@@ -240,10 +247,9 @@ button:active {
     margin: 85px;
     width: 287px;
     margin: 85px auto;
-}
-.plusIcon a {
     position: relative;
 }
+
 .wishPlus {
     font-size: 24px;
     color: #555;
@@ -252,11 +258,11 @@ button:active {
 }
 .wishPlus:hover {
     color: var(--main-color);
+    font-weight: 500;
 }
 .plusIcon img {
     width: 33px;
     height: 33px;
-
     display: inline-block;
     position: absolute;
     bottom: 0;
@@ -401,4 +407,7 @@ button:active {
     position: absolute;
     right: 60px;
     transform: translate(-50%);
+    width: 136px;
+    height: 22px;
+    text-align: center;
 }

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # allauth로그인 커스텀
     'widget_tweaks'
+
 ]
 
 SITE_ID = 1
