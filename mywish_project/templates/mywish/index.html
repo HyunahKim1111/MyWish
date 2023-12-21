@@ -13,7 +13,7 @@
         {% include 'mywish/navbar.html'%}
         <div id="wrap">
             <li>
-                <img src="{% static '/images/logo.svg' %}" alt="logo" class="logo" />
+                <!-- <img src="{% static '/images/logo.svg' %}" alt="logo" class="logo" /> -->
                 <video id="mainVideo" width="100%" autoplay muted allowfullscreen>
                     <source src="{% static 'videos/wish-main.mp4' %}" type="video/mp4" />
                 </video>
@@ -28,34 +28,33 @@
             </li>
 
             <div class="textWrap">
-                <div class="scroll_wrap">
+                <div class="scroll_on type_left">
+                    <h5 class="textMargin">이제 더 이상 미루지 마세요</h5>
+                </div>
+                <div class="scroll_on type_left">
+                    <h1>
+                        작심 3일을 <span class="orange">365일</span>로 바꾸도록 <br />
+                        도와드립니다!
+                    </h1>
+                </div>
+                <div class="imgWrap">
                     <div class="scroll_on type_left">
-                        <h5 class="textMargin">이제 더 이상 미루지 마세요</h5>
+                        <div class="frame-layout">
+                            <div class="frame c1"></div>
+                        </div>
                     </div>
                     <div class="scroll_on type_left">
-                        <h1>
-                            작심 3일을 <span class="orange">365일</span>로 바꾸도록 <br />
-                            도와드립니다!
-                        </h1>
+                        <div class="frame-layout">
+                            <div class="frame c2"></div>
+                        </div>
                     </div>
-                    <div class="imgWrap">
-                        <div class="scroll_on type_left">
-                            <div class="frame-layout">
-                                <div class="frame c1"></div>
-                            </div>
-                        </div>
-                        <div class="scroll_on type_left">
-                            <div class="frame-layout">
-                                <div class="frame c2"></div>
-                            </div>
-                        </div>
-                        <div class="scroll_on type_left">
-                            <div class="frame-layout">
-                                <div class="frame c3"></div>
-                            </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c3"></div>
                         </div>
                     </div>
                 </div>
+
                 <div class="scroll_on type_left">
                     <h5 class="textMargin">나의 버킷리스트를 공유하고 소통해 보세요.</h5>
                 </div>
