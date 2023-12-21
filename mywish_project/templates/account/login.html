@@ -21,10 +21,10 @@
                 <div class="login-profile"><img src="{% static 'images/login-icon.svg' %}" alt="" /></div>
                 <p>로그인해주세요</p>
                 <div class="inputWrap">
-                  <form method="post">{% csrf_token %}
-                    <p><input type="box" name="login" id="id-input" placeholder="ID" autocomplete="username" maxlength="150" required id="id_login"></p>
-                    <p>
-                      <input type="password" id="passwordBar" name="password" placeholder="Password" autocomplete="current-password" required id="id_password">
+                  <form method="POST">
+                    {% csrf_token %}
+                    <input type="box" name="username" id="id-input" placeholder="ID" {{ form.username }} required id="id_username">
+                    <input type="password" id="passwordBar" name="password" placeholder="Password" {{ form.password }} required id="id_password">
                     <button type="submit" id="loginBar">로그인</button>
                     <p>
                       <label for="id_remember">아이디저장:</label>
@@ -41,7 +41,6 @@
                 </div>
             </div>
         </div>
-
 
 
         <!-- <script>

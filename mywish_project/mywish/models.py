@@ -1,4 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+#장고에서 제공하는 user기능 만들기
+class User(AbstractUser):
+    pass
 
 #포스트 메인,상세 페이지 모델
 class Post(models.Model):
