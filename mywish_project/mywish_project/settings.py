@@ -42,12 +42,6 @@ INSTALLED_APPS = [
     'mywish',
     # 로그인 앱추가
     'django.contrib.sites',
-
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    # allauth로그인 커스텀
-    # 'widget_tweaks'
 ]
 
 # 장고 유저모델말고 커스텀 유저모델을 만들자
@@ -62,9 +56,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware', # csrf 토큰
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'allauth.account.middleware.AccountMiddleware',
-    
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
 ]
 
 
@@ -159,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'django.contrib.auth.backends.ModelBackend',
 # ]
 
-# LOGIN_REDIRECT_URL = 'mypage'
+LOGIN_REDIRECT_URL = 'mypage'
 # 로그아웃 후 리디렉션할 페이지
 # ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 # 로그아웃 버튼 클릭 시 자동 로그아웃
