@@ -240,6 +240,21 @@ button:active {
 }
 /* 로그인페이지 끝 */
 
+/* 로그인 후 마이페이지 */
+.mypage_logo {
+    width: 156px;
+    height: 65px;
+    background-image: url('../images/logo.svg');
+    background-size: cover;
+    background-color: #132;
+}
+.user_greeting {
+    color: #555;
+    font-size: 24px;
+}
+
+/* 로그인 마이페이지 끝 */
+
 /* -----마이 위시 페이지---- */
 /* 위시 추가 버튼 */
 .plusIcon {
