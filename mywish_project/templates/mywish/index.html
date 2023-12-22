@@ -13,12 +13,12 @@
         {% include 'mywish/navbar.html'%}
         <div id="wrap">
             <li>
-                <img src="{% static 'mywish/images/logo.svg' %}" alt="logo" class="logo" />
+                <!-- <img src="{% static '/images/logo.svg' %}" alt="logo" class="logo" /> -->
                 <video id="mainVideo" width="100%" autoplay muted allowfullscreen>
                     <source src="{% static 'videos/wish-main.mp4' %}" type="video/mp4" />
                 </video>
                 <div class="videoTxt">
-                    <h5 class="videoTitle">당신의 '죽기 전에' 를 응원합니다!</h5>
+                    <p class="videoTitle">당신의 '죽기 전에' 를 응원합니다!</h5>
                     <h1>
                         <span class="orange">죽기 전에</span>
                         꼭 해야 할 <br />
@@ -28,32 +28,77 @@
             </li>
 
             <div class="textWrap">
-                <h5 class="textMargin scroll-spy">이제 더 이상 미루지 마세요</h5>
-                <h1>
-                    작심 3일을 <span class="orange scroll-spy">365일</span>로 바꾸도록 <br />
-                    도와드립니다!
-                </h1>
+                <div class="scroll_on type_left">
+                    <h5 class="textMargin">이제 더 이상 미루지 마세요</h5>
+                </div>
+                <div class="scroll_on type_left">
+                    <h1>
+                        작심 3일을 <span class="orange">365일</span>로 바꾸도록 <br />
+                        도와드립니다!
+                    </h1>
+                </div>
+                <div class="imgWrap">
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c1"></div>
+                        </div>
+                    </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c2"></div>
+                        </div>
+                    </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll_on type_left">
+                    <h5 class="textMargin">나의 버킷리스트를 공유하고 소통해 보세요.</h5>
+                </div>
+                <div class="scroll_on type_left">
+                    <h1>
+                        다양한 유저들과 소통하며 <br />
+                        피드백을 받을 수 있습니다.
+                    </h1>
+                </div>
 
                 <div class="imgWrap">
-                    <div class="frame c1"></div>
-                    <div class="frame c2"></div>
-                    <div class="frame c3"></div>
-                </div>
-                <h5 class="textMargin">나의 버킷리스트를 공유하고 소통해 보세요.</h5>
-                <h1>
-                    다양한 유저들과 소통하며 <br />
-                    피드백을 받을 수 있습니다.
-                </h1>
-                <div class="imgWrap">
-                    <div class="frame c4"></div>
-                    <div class="frame c5"></div>
-                    <div class="frame c6"></div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c4"></div>
+                        </div>
+                    </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c5"></div>
+                        </div>
+                    </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c6"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="imgWrap">
-                    <div class="frame c7"></div>
-                    <div class="frame c8"></div>
-                    <div class="frame c9"></div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c7"></div>
+                        </div>
+                    </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c8"></div>
+                        </div>
+                    </div>
+                    <div class="scroll_on type_left">
+                        <div class="frame-layout">
+                            <div class="frame c9"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,15 +113,40 @@
             });
 
             //스크롤
+            document.addEventListener('DOMContentLoaded', function () {
+                // 클래스가 "scroll_on"인 모든 요소를 선택합니다.
+                const counters = document.querySelectorAll('.scroll_on');
 
-            const spyEls = document.querySelectorAll('section.scroll-spy');
-            spyEls.forEach(function (spyEl) {
-                new ScrollMagic.Scene({
-                    triggerElement: spyEl, //보여짐 여부를 감시할 요소 지정
-                    triggerHook: 0.8,
-                })
-                    .setClassToggle(spyEl, 'show')
-                    .addTo(new ScrollMagic.Controller());
+                // 노출 비율(%)과 애니메이션 반복 여부(true/false)를 설정합니다.
+                const exposurePercentage = 100; // ex) 스크롤 했을 때 counters 컨텐츠가 화면에 100% 노출되면 숫자가 올라갑니다.
+                const loop = true; // 애니메이션 반복 여부를 설정합니다. (true로 설정할 경우, 요소가 화면에서 사라질 때 다시 숨겨집니다.)
+
+                // 스크롤 이벤트를 모니터링합니다.
+                window.addEventListener('scroll', function () {
+                    // 각 "scroll_on" 클래스를 가진 요소에 대해 반복합니다.
+                    counters.forEach(function (el) {
+                        // 요소의 위치 정보를 가져옵니다.
+                        const rect = el.getBoundingClientRect();
+                        const winHeight = window.innerHeight; // 현재 브라우저 창의 높이
+                        const contentHeight = rect.bottom - rect.top; // 요소의 높이
+
+                        // 요소가 화면에 특정 비율만큼 노출될 때 처리합니다.
+                        if (
+                            rect.top <= winHeight - (contentHeight * exposurePercentage) / 100 &&
+                            rect.bottom >= (contentHeight * exposurePercentage) / 100
+                        ) {
+                            el.classList.add('active');
+                        }
+
+                        // 요소가 화면에서 완전히 사라졌을 때 처리합니다.
+                        if (loop && (rect.bottom <= 0 || rect.top >= window.innerHeight)) {
+                            el.classList.remove('active');
+                        }
+                    });
+                });
+
+                // 페이지 로딩 시 초기 스크롤 이벤트를 발생시켜 초기 상태를 설정합니다.
+                window.dispatchEvent(new Event('scroll'));
             });
         </script>
     </body>

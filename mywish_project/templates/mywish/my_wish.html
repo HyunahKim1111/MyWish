@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="{% static 'mywish/css/style.css' %}" type="text/css" />
+        <title>마이위시 페이지</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -21,18 +21,20 @@
         <div id="wrap">
             <!-- 위시 추가 버튼 영역 -->
             <div class="plusIcon">
-                <img src="{% static 'mywish/images/plus-circle.svg' %}" alt="lightningIcon" />
-                <p class="wishPlus">나의 위시로 등록하기</p>
+                <a href="javascript:void(0)">
+                    <img src="{% static 'images/plus-circle.svg' %}" alt="lightningIcon" />
+                    <p class="wishPlus">나의 위시 등록하기</p>
+                </a>
             </div>
             <!-- 위시 추가 버튼 영역 -->
             <div id="container">
-                <img src="{% static 'mywish/images/zap.svg' %}" alt="lightningIcon" />
+                <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
                 <div>
                     <p class="wishCon green">유럽여행</p>
 
                     <p class="wishCon">5:10pm – 6:10pm</p>
                 </div>
-                <div><input type="checkbox" class="checkbox" /></div>
+                <input type="checkbox" class="checkbox" />
             </div>
         </div>
     </body>

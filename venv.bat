@@ -1,2 +1,2 @@
 @echo off
-C:\bigdata\github\MyWish\venv\Scripts\activate
+C:\Users\hi\Desktop\MyWish_frontend\venv\Scripts\activate

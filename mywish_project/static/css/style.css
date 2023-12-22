@@ -20,7 +20,7 @@ a:visited {
     color: inherit;
 }
 a:hover {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--main-color);
 }
 .green {
@@ -29,12 +29,51 @@ a:hover {
 .orange {
     color: var(--main-color);
 }
+svg {
+    transition: fill 0.3s;
+}
+svg:hover {
+    stroke: var(--main-color);
+}
+/* 스크롤효과 */
 
+.scroll_wrap {
+    overflow: hidden;
+}
+.scroll_on {
+    padding: 50px 0;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    opacity: 0;
+    transition: all 1s;
+}
+.scroll_on.active {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+.scroll_on.type_top {
+    transform: translate(0, -50px);
+}
+.scroll_on.type_bottom {
+    transform: translate(0, 50px);
+}
+.scroll_on.type_left {
+    transform: translate(-50px, 0);
+}
+.scroll_on.type_right {
+    transform: translate(50px, 0);
+}
 /* index page */
+body {
+    min-width: 320px;
+    min-height: 480px;
+}
 #wrap {
     width: 1440px;
-    margin: 0 auto;
+    /* margin: 0 10%; */
     width: 100%;
+    box-sizing: border-box;
 }
 li {
     position: relative;
@@ -51,35 +90,42 @@ li {
     left: 100px;
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.4);
-    padding: 10px 50px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }
-.textWrap {
-    margin: 0 5%;
-}
-h1 {
-    margin-top: 20px;
-    font-size: 50px;
+.videoTxt p {
+    font-size: 24px;
+    font-weight: bold;
 }
 .videoTitle {
     font-size: 24px;
 }
-.textMargin {
+.textWrap {
+    margin: 0 10%;
+}
+h1 {
+    margin-top: 10px;
+    font-size: 50px;
+}
+h5 {
     margin-top: 150px;
     font-size: 24px;
 }
 
 .imgWrap {
     display: flex;
-    min-width: 1200px;
+    max-width: 1200px;
+    margin: 100px 0 100px 0;
+}
+.frame-layout {
+    margin-right: 40px;
 }
 .frame {
-    margin: 50px 0px 0px;
-    width: 413px;
-    height: 413px;
+    box-sizing: border-box;
+    width: 410px;
+    height: 410px;
     border-radius: 67px;
     overflow: hidden;
     background-size: cover;
-    margin-right: 70px;
 }
 .c1 {
     background-image: url('../images/bruce-mars-gJtDg6WfMlQ-unsplash.jpg');
@@ -194,6 +240,21 @@ button:active {
 }
 /* 로그인페이지 끝 */
 
+/* 로그인 후 마이페이지 */
+.mypage_logo {
+    width: 156px;
+    height: 65px;
+    background-image: url('../images/logo.svg');
+    background-size: cover;
+    background-color: #132;
+}
+.user_greeting {
+    color: #555;
+    font-size: 24px;
+}
+
+/* 로그인 마이페이지 끝 */
+
 /* -----마이 위시 페이지---- */
 /* 위시 추가 버튼 */
 .plusIcon {
@@ -201,15 +262,25 @@ button:active {
     margin: 85px;
     width: 287px;
     margin: 85px auto;
+    position: relative;
 }
-.plusIcon > img {
-    width: 33px;
-    height: 33px;
-    margin-right: 15px;
-}
+
 .wishPlus {
     font-size: 24px;
     color: #555;
+    display: inline;
+    margin-left: 43px;
+}
+.wishPlus:hover {
+    color: var(--main-color);
+    font-weight: 500;
+}
+.plusIcon img {
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
 }
 /* 컨텐츠 박스 */
 #container {
@@ -222,14 +293,13 @@ button:active {
     display: flex;
     box-sizing: border-box;
     padding: 32px;
+    position: relative;
 }
-#container {
-    display: flex;
-}
+
 #container > img {
+    margin-top: 10px;
     width: 37.5px;
     height: 37.2px;
-    top: 50%;
 }
 .wishCon {
     font-size: 21px;
@@ -241,6 +311,9 @@ button:active {
     width: 27px;
     height: 27px;
     border: 1px solid var(--main-color);
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
 }
 /* -----마이 위시 페이지 끝---- */
 
@@ -251,22 +324,60 @@ button:active {
     display: flex;
     box-sizing: border-box;
     background: #fff;
+    position: relative;
 }
 #navWrap a:hover {
     cursor: pointer;
 }
 .navLogo {
-    position: relative;
+    margin-left: 60px;
 }
 .navLogo img {
     width: 92px;
-    margin: 25px;
+    margin: 18px 0 0 0;
+    padding: 10px;
+}
+.navBtn {
+    padding: 18px 50px 0 0;
+    text-align: center;
+}
+.first {
+    margin-left: 132px;
+}
+.navBtn:hover {
+    color: var(--main-color);
+}
+.search {
+    position: absolute;
+    margin-top: 18px;
+    display: flex;
+    right: 60px;
+}
+.searchBox {
+    background-color: #eb4600;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px 0 0 20px;
+    position: relative;
+}
+.searchBox > svg {
+    position: absolute;
+    bottom: 25%;
+    margin-left: 12px;
+}
+#searchBar {
+    background-color: #d9d9d9;
+    width: 390px;
+    height: 40px;
+    border-radius: 0 20px 20px 0;
+    outline: none;
+    border: none;
 }
 
 /* footer */
 #foot-wrap {
     width: 100%;
-    height: 115px;
+    height: 70px;
     display: flex;
     margin-top: 50px;
     box-sizing: border-box;
@@ -295,6 +406,14 @@ button:active {
     margin: 5px 10px;
     color: #333;
 }
+.copy {
+    position: relative;
+    margin: 25px;
+}
+.privacy {
+    position: absolute;
+    right: 150px;
+}
 .foot-inner > ul li > span {
     font-weight: 600;
     color: #333;
@@ -303,4 +422,7 @@ button:active {
     position: absolute;
     right: 60px;
     transform: translate(-50%);
+    width: 136px;
+    height: 22px;
+    text-align: center;
 }
