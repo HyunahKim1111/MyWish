@@ -134,7 +134,7 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # 프론트 이미지 경로를 위해 추가함
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),

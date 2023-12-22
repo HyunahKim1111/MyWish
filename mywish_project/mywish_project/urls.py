@@ -23,11 +23,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     
     path('', include('mywish.urls')),
+    path('accounts/', include('mywish.urls')),
     path('admin/', admin.site.urls),
-    #allauth 연동 
-    # path('accounts/',include('allauth.urls')),
-    # path('accounts/', include('login_project.urls')),
-    # path('acounts/', include('mywish.urls')),
+    
 ]
-
+# media파일의 url설정
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

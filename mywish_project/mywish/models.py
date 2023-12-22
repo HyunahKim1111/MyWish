@@ -23,7 +23,7 @@ class Post(models.Model):
         return f'[{self.pk}]{self.title}{self.time}'
     
     #메인페이지에서 제목을 클릭하면 상세페이지로 넘어가는 url
-    def get_absolute_url(self):
-        return f'wish_content/{self.pk}/'
+    # def get_absolute_url(self):
+    #     return f'wish_content/{self.pk}/'
     
 

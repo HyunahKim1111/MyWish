@@ -1,54 +1,53 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Post, User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth import login as auth_login
 
 import requests
 # duration 시간으로 보이기
 from isodate import parse_duration
 from django.conf import settings
 
-# 로그인
 def login_view(request):
     if request.method == "POST":
+        print(request.POST)
         # print로 뭐가 들어오는 지 볼 수 있어
         username = request.POST["username"] 
         password = request.POST["password"]
         user = authenticate(username=username, password=password)
         if user is not None:
             print("인증성공")
-            login(request, user)
+            auth_login(request ,user)
         else:
             print("인증실패")
     return render(request, "mywish/login.html")
 
 def logout_view(request):
     logout(request)
-    return redirect("mywish:login")
+    return redirect('index')
 # redirect로 로그아웃 리턴해주기
-# "user(app_name = "user"):login" 로그아웃이 끝나면 로그인페이지로 돌려주겠다
 
 # 회원가입
 def signup_view(request):
 
     if request.method == "POST":
         print(1, request.POST) # request.POST에 뭐가 들어있는지 print로 확인해보자
-        profile_img = request.FILES['profile_img'] # model에 사진 넣을 공간을 만들어주자!
+        print(2, request.FILES)
+        profile_img = request.FILES['profile_img'] 
         username = request.POST["username"]
         password = request.POST["password"]
         firstname = request.POST["firstname"]
         lastname = request.POST["lastname"]
         email = request.POST["email"]
-        student_id = request.POST["student_id"]
 
         user = User.objects.create_user(username, email, password)
         user.last_name = lastname
         user.first_name = firstname
-        user.student_id = student_id
         user.profile_img = profile_img
         user.save()
 
-        return redirect("mywish:login") # 로그인 해보세요
+        return redirect("login") # 로그인창으로 보내기
 
     return render(request, "mywish/signup.html")
 

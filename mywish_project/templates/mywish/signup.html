@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'signup.css' %}">
 회원가입 페이지
 <br>
-<img src="{% static 'hamster.png' %}" alt="">
+<img src="{% static 'images/hamster.png' %}" alt="">
 
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
@@ -18,5 +18,6 @@
     <input name="email" type="text">
     <p>프로필사진</p>
     <input name="profile_img" type="file">
+    <br>
     <input type="submit" value="회원가입">
 </form>
