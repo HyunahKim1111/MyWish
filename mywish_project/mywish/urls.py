@@ -1,5 +1,4 @@
 from django.urls import path
-#.은 현재 폴더에 있는 views.py를 사용할 수 있게 가져오라는 뜻
 from . import views
 
 urlpatterns = [
@@ -11,7 +10,7 @@ urlpatterns = [
     path('my_wish/', views.my_wish, name='my_wish'), # 마이위시 페이지
     path('', views.index, name='index'), # 메인
 
-
-    # path('', views.index), -- FBV방식
-    # path('<int:pk>/', views.single_post_page), #FBV방식
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
+    path("signup/", views.signup_view, name="signup"),
 ]

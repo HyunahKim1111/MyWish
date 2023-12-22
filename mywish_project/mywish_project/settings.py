@@ -38,17 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     #앱추가
     'mywish',
-    # 로그인추가
+    # 로그인 앱추가
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
     # allauth로그인 커스텀
-    'widget_tweaks'
+    # 'widget_tweaks'
 ]
+
+# 장고 유저모델말고 커스텀 유저모델을 만들자
+AUTH_USER_MODEL = 'mywish.User'
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,9 +63,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware',
     
 ]
+
 
 ROOT_URLCONF = 'mywish_project.urls'
 
@@ -128,14 +134,16 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 # 프론트 이미지 경로를 위해 추가함
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
 ]
 
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -143,23 +151,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # allauth 
-AUTHENTICATION_BACKENDS = [
-    # 'allauth' specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
+# AUTHENTICATION_BACKENDS = [
+#     # 'allauth' specific authentication methods, such as login by e-mail
+#     'allauth.account.auth_backends.AuthenticationBackend',
 
-    #Needed to login by username in Django admin, regardless of 'allauth'
-    'django.contrib.auth.backends.ModelBackend',
-]
-SITE_ID = 1
+#     #Needed to login by username in Django admin, regardless of 'allauth'
+#     'django.contrib.auth.backends.ModelBackend',
+# ]
 
-LOGIN_REDIRECT_URL = 'mypage'
+# LOGIN_REDIRECT_URL = 'mypage'
 # 로그아웃 후 리디렉션할 페이지
-ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
+# ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 # 로그아웃 버튼 클릭 시 자동 로그아웃
-ACCOUNT_LOGOUT_ON_GET = True
+# ACCOUNT_LOGOUT_ON_GET = True
 
 # ACCOUNT_EMAIL_REQUIRED = True 이메일을 반드시 받으려면 추가
-ACCOUNT_EMAIL_VERIFICATIOM = 'none'
+# ACCOUNT_EMAIL_VERIFICATIOM = 'none'
 
 # 유투브 DATA API 인증 KEY
 YOUTUBE_DATA_API_KEY = 'AIzaSyCJnNoEtvpdbD61jen2NCdbbqQaMnPp7Zc'

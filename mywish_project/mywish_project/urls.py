@@ -16,11 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     
@@ -28,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #allauth 연동 
     # path('accounts/',include('allauth.urls')),
-    path('login/', LoginView.as_view(), name='login')
+    # path('accounts/', include('login_project.urls')),
+    # path('acounts/', include('mywish.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,46 +1,30 @@
-<!DOCTYPE html>
 {% load static %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-        <title>로그인 페이지</title>
-    </head>
-    <body>
-        <div id="loginWrap">
-            <div class="login-page">
-                <div class="logo-login"><img src="{% static 'images/logo.svg' %}" alt="logo" /></div>
-                <!-- 프로필 이미지  -->
-                <div class="login-profile"><img src="{% static 'images/login-icon.svg' %}" alt="" /></div>
-                <p>로그인해주세요</p>
-                <div class="inputWrap">
-                    <input type="box" id="id-input" placeholder="ID" />
-                    <input type="password" id="passwordBar" placeholder="Password" />
-                    <button type="button" id="loginBar">로그인</button>
-                </div>
-                <div class="login-sub">
-                    <span><a href="javascript:void(0);">아이디찾기</a></span>
+로그인페이지
+<br>
+<img src="{% static 'hamster.png' %}" alt="">
+{% if user.is_authenticated %}
+<!-- 유저가 로그인 성공한 상황 -->
+    로그인성공
+    {{ user.username }}님 환영합니다. <br>
+    {% if user.profile_img %}
+        <img src="{{ mywish.profile_img.url }}" alt="프로필사진">
+    {% endif %}
+     <!-- 이미지 필드에서 하위로 가져올 때는 url로 가져와야 해. -->
+    <!-- 로그아웃 구현하기(로그인을 해야지 로그아웃이 되겠지? 그래서 여기로) -->
+    <a href="{% url 'mywish:logout' %}">로그아웃</a>
+    <!-- url에 name을 붙여주면 이거를 url포멧팅으로 바꿀 수 있어! a href="/auth/logout" -->
 
-                    <span><a href="javascript:void(0);">비밀번호 찾기</a></span>
+{% else %}
+<!-- 유저가 성공하지 못한 상태라면 로그인을 다시 띄워주기 -->
+<form action="" method="POST">
+    {% csrf_token %}
+    <!-- csrfmiddlewaretoken은 토큰 를 통해서 들어가는 key -->
+    <input name="username" type="text">
+    <input name="password" type="password">
+    <input type="submit" value="로그인">
 
-                    <span><a href="javascript:void(0);">회원가입</a></span>
-                </div>
-            </div>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const loginBtn = document.getElementById('loginBar');
+</form>
+<!-- 회원가입 -->
+<a href="{% url 'mywish:signup' %}">회원가입</a>
 
-                loginBtn.addEventListener('click', function () {
-                    if (loginBtn.innerText === '로그인') {
-                        loginBtn.innerText = '로그아웃';
-                        alert('로그인되었습니다.');
-                    } else {
-                        loginBtn.innerText = '로그인';
-                    }
-                });
-            });
-        </script>
-    </body>
-</html>
+{% endif %}
