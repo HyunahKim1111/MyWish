@@ -16,17 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     
     path('', include('mywish.urls')),
+    path('accounts/', include('mywish.urls')),
     path('admin/', admin.site.urls),
-
-    #allauth 연동 
-    path('accounts/',include('allauth.urls')),
+    
 ]
-
+# media파일의 url설정
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
