@@ -71,7 +71,6 @@ body {
 }
 #wrap {
     width: 1440px;
-    /* margin: 0 10%; */
     width: 100%;
     box-sizing: border-box;
 }
@@ -243,16 +242,71 @@ button:active {
 /* 로그인 후 마이페이지 */
 .mypage_logo {
     width: 156px;
-    height: 65px;
+    height: 68px;
     background-image: url('../images/logo.svg');
     background-size: cover;
-    background-color: #132;
+    background-color: #fff;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 126px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    margin: 65px;
+}
+.profileFrame {
+    width: 65px;
+    height: 65px;
+    background-image: url('../images/login-icon.svg');
+    background-position: center;
+    background-size: cover;
+    border: 0.5px solid rgba(235, 70, 0, 0.5);
+    border-radius: 50%;
 }
 .user_greeting {
     color: #555;
     font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+    position: relative;
+    padding: 18px;
 }
-
+.my_wish_list {
+    font-size: 24px;
+    font-weight: normal;
+    color: #555;
+    text-align: center;
+    margin: 30px;
+}
+.deleteBtn {
+    display: flex;
+}
+.delete {
+    font-size: 14px;
+    margin-left: 61.5%;
+    margin-bottom: 17px;
+}
+.border {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.border hr {
+    background: #999;
+    width: 588px;
+    border-width: 0.5px;
+}
+.mypageLogout {
+    margin-top: 85px;
+    display: flex;
+    justify-content: center;
+}
+.mypageLogout a {
+    font-size: 16px;
+}
 /* 로그인 마이페이지 끝 */
 
 /* -----마이 위시 페이지---- */
@@ -310,7 +364,7 @@ button:active {
 .checkbox {
     width: 27px;
     height: 27px;
-    border: 1px solid var(--main-color);
+    border: 3px solid var(--main-color);
     position: absolute;
     bottom: 30px;
     right: 50px;
@@ -381,7 +435,6 @@ button:active {
     display: flex;
     margin-top: 50px;
     box-sizing: border-box;
-    position: relative;
 }
 #foot-wrap img {
     left: 120px;
