@@ -1,26 +1,38 @@
 {% load static %}
-로그인페이지
-<br>
-<img src="{% static 'images/hamster.png' %}" alt="">
-{% if user.is_authenticated %}
-<!-- 유저가 로그인 성공한 상황 -->
-    로그인성공!
-    {{ user.username }}님 환영합니다. <br>
-    <img src="{{ profile_img.url }}" alt="프로필사진">
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <!-- url에 name을 붙여주면 이거를 url포멧팅으로 바꿀 수 있어! a href="/auth/logout" -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+        <title>로그인페이지</title>
+    </head>
+    <div class="loginWrap">
+        <div class="login-page">
+            <div class="logo-login"><img src="{% static 'images/logo.svg' %}" alt="logo" /></div>
+            {% if user.is_authenticated %}
+            <!-- 유저가 로그인 성공한 상황 -->
+            로그인성공! {{ user.username }}님 환영합니다.
+            <br />
+            <img src="{{ profile_img.url }}" alt="프로필사진" />
+            <a href="{% url 'logout' %}">로그아웃</a>
+            <!-- url에 name을 붙여주면 이거를 url포멧팅으로 바꿀 수 있어! a href="/auth/logout" -->
 
-{% else %}
-<!-- 유저가 성공하지 못한 상태라면 로그인을 다시 띄워주기 -->
-<form action="" method="POST">
-    {% csrf_token %}
-    <!-- csrfmiddlewaretoken은 토큰 를 통해서 들어가는 key -->
-    <input name="username" type="text">
-    <input name="password" type="password">
-    <input type="submit" value="로그인">
+            {% else %}
+            <!-- 유저가 성공하지 못한 상태라면 로그인을 다시 띄워주기 -->
+            <form action="" method="POST">
+                {% csrf_token %}
+                <!-- csrfmiddlewaretoken은 토큰 를 통해서 들어가는 key -->
+                <div class="login-profile"><img src="{% static 'images/login-icon.svg' %}" alt="empty-profile" /></div>
+                <p>로그인해주세요</p>
+                <input name="username" type="text" id="id-input" />
+                <input name="password" type="password" id="passwordBar" />
+                <input type="submit" id="loginBar" value="로그인" />
+            </form>
+            <!-- 회원가입 -->
+            <div class="login-sub"><a href="{% url 'signup' %}">회원가입</a></div>
 
-</form>
-<!-- 회원가입 -->
-<a href="{% url 'signup' %}">회원가입</a>
-
-{% endif %}
+            {% endif %}
+        </div>
+    </div>
+</html>

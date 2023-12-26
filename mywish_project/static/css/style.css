@@ -165,8 +165,10 @@ h5 {
 .login-page {
     text-align: center;
 }
-.login-page > p {
+.login-page p {
     margin: 30px;
+    color: #555;
+    font-size: 20px;
 }
 .logo-login img {
     width: 152px;
@@ -183,11 +185,11 @@ h5 {
     opacity: 50%;
     border: none;
     display: block;
+    padding: 0 0 0 24px;
 }
 
 input {
     box-sizing: border-box;
-    padding: 0 0 0 24px;
     font-size: 16px;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -210,6 +212,7 @@ button:active {
     color: rgba(51, 51, 51, 50);
     border: none;
     display: block;
+    padding: 0 0 0 24px;
 }
 
 #loginBar {
@@ -221,7 +224,9 @@ button:active {
     border: none;
     font-size: 16px;
     cursor: pointer;
+    box-sizing: border-box;
 }
+
 #loginBar:hover {
     background-color: #555;
     color: var(--main-color);
@@ -478,4 +483,32 @@ button:active {
     width: 136px;
     height: 22px;
     text-align: center;
+}
+/* 회원가입 페이지 */
+.signupTxt {
+    font-size: 15px;
+    color: #555;
+}
+#profile_btn {
+    border-radius: 5px;
+    background-color: var(--light-gray);
+    color: var(--main-text);
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #777;
+    background-color: #f0f0f0;
+}
+#profile_btn:hover {
+    font-weight: bold;
+    background-color: var(--light-gray);
+}
+.logo-login {
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.photo-contect {
+    display: flex;
+    font-size: 15px;
+    color: #555;
 }

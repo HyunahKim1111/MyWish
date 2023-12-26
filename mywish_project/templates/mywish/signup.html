@@ -1,23 +1,34 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'signup.css' %}">
-회원가입 페이지
-<br>
-<img src="{% static 'images/hamster.png' %}" alt="">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <title>회원가입 페이지</title>
+</head>
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <p>아이디</p>
-    <input name="username" type="text">
-    <p>비밀번호</p>
-    <input name="password" type="password">
-    <p>성</p>
-    <input name="firstname" type="text">
-    <p>이름</p>
-    <input name="lastname" type="text">
-    <p>이메일</p>
-    <input name="email" type="text">
-    <p>프로필사진</p>
-    <input name="profile_img" type="file">
-    <br>
-    <input type="submit" value="회원가입">
-</form>
+<div class="loginWrap">
+    <div class="logo-login">
+        <img src="{% static 'images/logo.svg' %}" alt="logo" />
+    </div>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p class="signupTxt">아이디</p>
+        <input name="username" type="text" id="passwordBar" />
+        <p class="signupTxt">비밀번호</p>
+        <input name="password" type="password" id="passwordBar" />
+        <p class="signupTxt">성</p>
+        <input name="firstname" type="text" id="passwordBar" />
+        <p class="signupTxt">이름</p>
+        <input name="lastname" type="text" id="passwordBar" />
+        <p class="signupTxt">이메일</p>
+        <input name="email" type="text" id="passwordBar" />
+        <div class="photo-contect">
+            <p class="signupTxt">프로필사진</p>
+            <input name="profile_img" type="file" name="profile_img" />
+        </div>
+
+        <br />
+        <input type="submit" value="회원가입" id="profile_btn" />
+    </form>
+</div>
