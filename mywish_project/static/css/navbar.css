@@ -18,6 +18,10 @@
     margin: 18px 0 0 0;
     padding: 10px;
 }
+.navBtnWrap {
+    display: flex;
+    margin-left: 88px;
+}
 .navBtn {
     padding: 18px 50px 0 0;
     text-align: center;
@@ -41,6 +45,7 @@
     border-radius: 20px 0 0 20px;
     position: relative;
 }
+
 .searchBox > svg {
     position: absolute;
     bottom: 25%;
@@ -53,4 +58,17 @@
     border-radius: 0 20px 20px 0;
     outline: none;
     border: none;
+}
+input {
+    box-sizing: border-box;
+    padding: 0 0 0 24px;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+input::placeholder {
+    font-size: 16px;
+}
+input::after {
+    border: 3px solid var(--main-color);
 }
