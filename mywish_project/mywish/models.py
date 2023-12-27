@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 
 class User(AbstractUser): 
@@ -26,4 +27,11 @@ class Post(models.Model):
     # def get_absolute_url(self):
     #     return f'wish_content/{self.pk}/'
     
+class Mywish(models.Model):
+    wish_list = models.CharField(max_length=100)
 
+    def __str__(self):
+        return "위시목록: "+self.wish_list
+    
+    def get_absolute_url(self):
+        return reverse('list') 

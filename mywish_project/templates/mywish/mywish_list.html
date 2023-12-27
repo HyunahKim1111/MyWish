@@ -24,10 +24,26 @@
                 <img src="{% static 'mywish/images/plus-circle.svg' %}" alt="lightningIcon" />
                 <p class="wishPlus">나의 위시로 등록하기</p>
             </div>
+            <!-- Backend : 위시목록 띄우기 -->
+            <div class="btn-group">
+                <a href="{% url 'add' %}" class="btn btn-info">Add WishList</a>
+            </div>
+
+            <table>
+            {% for mywish in object_list %}
+                <tr>
+                    <td>{{mywish.wish_list}}</td>
+                    <td><a href="{% url 'update' pk=mywish.id %}">수정(Update)</a></td>
+                    <td><a href="{% url 'delete' pk=mywish.id %}">삭제</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+
             <!-- 위시 추가 버튼 영역 -->
             <div id="container">
                 <img src="{% static 'mywish/images/zap.svg' %}" alt="lightningIcon" />
                 <div>
+
                     <p class="wishCon green">유럽여행</p>
 
                     <p class="wishCon">5:10pm – 6:10pm</p>

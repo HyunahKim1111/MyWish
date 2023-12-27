@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
-from .models import Post, User
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .models import Post, User, Mywish
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
+from django.urls import reverse_lazy
 
 import requests
 # duration 시간으로 보이기
@@ -119,8 +120,26 @@ def youtube(request):
 # youtube API가져오기 https://developers.google.com/youtube/v3/docs/search/list
 
 # 마이위시 페이지
-def my_wish(request):
-    return render(request, 'mywish/my_wish.html')
+class MywishListView(ListView):
+    model = Mywish
+
+class MywishCreateView(CreateView):
+    model = Mywish
+    fields = ['wish_list'] # model에 있는 필드 중 사용할 거 쓰기!
+    success_url = reverse_lazy('list') # url이름을 써줘야 해
+    template_name_suffix = '_create'
+
+class MywishDetailView(DetailView):
+    model = Mywish
+
+class MywishUpdateView(UpdateView):
+    model = Mywish
+    fields = ['wish_list']
+    template_name_suffix = '_update'
+
+class MywishDeleteView(DeleteView):
+    model = Mywish
+    success_url = reverse_lazy('list')
 
 # 메인페이지
 def index(request):
