@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, User
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
+from django.urls import reverse_lazy
 
 import requests
 # duration 시간으로 보이기
@@ -51,14 +52,43 @@ def signup_view(request):
 
     return render(request, "mywish/signup.html")
 
-#포스트 메인페이지
-class PostList(ListView):
+
+#포스트 메인페이지(함수뷰)
+def post_list(request):
+    posts = Post.objects.all()
+    return render(request, 'mywish/post_list.html', {'posts':posts})
+
+class PostUploadView(CreateView):
     model = Post
-    ordering = '-pk'
+    fields = ['head_image', 'content'] # 작성자는 로그인하면 저절로! 작성시간은 auto_now가 있어서 자동으로 된다.
+    template_name = 'mywish/post_upload.html'
+
+# 로그인을 했다는 전제로 업로드를 하는것임.
+    def form_valid(self, form): # 저장 전에 데이터가 올바른지 처리해줌. 올바르면 저장하겠다.
+        form.instance.author_id = self.request.user.id
+        if form.is_valid():
+            # 데이터가 올바르다면 저장을 하겠다.
+            form.instance.save() # form안에는 Post모델에 있는 instance가 존재한다. 그래서 Post모델의 instance를 저장한거야.
+            return redirect('post_list')
+        else:
+            return self.render_to_response({'form':form})
+        
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('post_list')
+    template_name = 'mywish/post_delete.html'
+
+class PostUpdateView(UpdateView):
+    model = Post
+    fields = ['head_image', 'content']
+    template_name = 'mywish/post_update.html'
 
 #포스트 상세페이지
-class PostDetail(DetailView):
+class PostDetailView(DetailView):
     model = Post
+    fields = ['head_image', 'content']
+    template_name = 'mywish/post_detail.html'
+
 
 # 나는될놈 페이지
 # def content(request):

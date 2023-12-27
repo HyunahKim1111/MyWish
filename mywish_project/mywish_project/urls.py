@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from django.conf.urls.static import static
+from django.conf.urls.static import static # static을 서빙해줌.
 
 
 urlpatterns = [
@@ -27,5 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
 ]
-# media파일의 url설정
+# media파일의 url설정 DEBUG모드일 때 - static기능을 사용한다.
+# 서비스 배포시 방법1. 미디어 파일 서버를 별도로 두고 사용한다. 방법2.웹서버에서 별도로 서빙 성정을 한다. nginx나 아파치같은 거 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

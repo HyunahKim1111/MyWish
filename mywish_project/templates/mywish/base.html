@@ -6,9 +6,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static '/css/navbar.css' %}" type="text/css" />
-        <title>네비게이션 바</title>
+        <title>MyWish{% block title%}{% endblock %}</title>
     </head>
     <body>
+        <!-- 네이베이션 -->
         <div id="navWrap">
             <div class="navLogo">
                 <a href="#"> <img src="{% static '/images/logo.svg' %}" alt="logo" /></a>
@@ -26,5 +27,35 @@
                 <img src="{% static '/images/user.svg' %}" alt="user-icon" /><a href="#">마이페이지</a>
             </div>
         </div>
+        <!-- 네이게이션 끝 -->
+
+        {% block content %}
+        {% endblock %}
+
+        <!-- 풋터 시작 -->
+        <div id="foot-wrap">
+            <hr />
+            <img src="{% static 'images/logo.svg' %}" alt="footer-logo" />
+            <div class="foot-inner">
+                <ul class="privacy">
+                    <li>이용약관</li>
+                    <li>개인정보처리방침</li>
+                </ul>
+                <ul class="copy">
+                    <li>COPYRIGHT © 2024 MYWISH DBA.</li>
+                    <li>TEAM CS <span>김현아 / 정지은</span></li>
+                </ul>
+            </div>
+            <div class="family-site">
+                <select name="family" id="family">
+                    <option value="#">패밀리 사이트1</option>
+                    <option value="#">패밀리 사이트2</option>
+                    <option value="#">패밀리 사이트3</option>
+                </select>
+            </div>
+        </div>
+        <!-- 풋터 끝 -->
+
+
     </body>
 </html>

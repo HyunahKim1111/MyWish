@@ -4,14 +4,20 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>포스트 상세페이지_도전달성_상세</title>
+        <title>{{object.content|truncatechars:10}}</title>
         <link rel="stylesheet" href="{% static 'mywish/bootstrap/bootstrap.min.css' %}" media="screen" />
     </head>
     <body>
-        <h1>글 리스트에서 상세 페이지 보여줄 것입니다.</h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia explicabo sit consequatur perferendis numquam
-            ab natus optio tempore vero vel!
-        </p>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 panel panel-default">
+                <p><img src="{{ object.head_image.url }}" style="width:50%;" alt=""></p>
+                <button type="button" class="btn btn-xs btn-info">{{ object.author.username }}</button>
+                <p>{{ post.content|linebreaksbr }}</p>
+                <a href="{% url 'post_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right">Delete</a>
+                <a href="{% url 'post_update' pk=object.id %}" class="btn btn-outline-success btn-sm float-right">Update</a>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
     </body>
 </html>
