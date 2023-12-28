@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'mywish',
     # 로그인 앱추가
     'django.contrib.sites',
-    'disqus',
+    # 'disqus',
 ]
 
 # 장고 유저모델말고 커스텀 유저모델을 만들자

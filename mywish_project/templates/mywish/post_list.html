@@ -5,27 +5,23 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>포스트 목록 페이지_도전달성 목록</title>
-        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen" />
+        <!-- <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen" /> -->
     </head>
     <body>
-        {% include 'mywish/navbar.html'%}
-        
-        {% for post in posts %}
+        {% include 'mywish/navbar.html'%} {% for post in posts %}
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 panel panel-default">
-                <p><img src="{{ post.head_image.url }}" style="width:50%;" alt=""></p>
+                <p><img src="{{ post.head_image.url }}" style="width: 50%" alt="" /></p>
                 <button type="button" class="btn btn-xs btn-info">{{ post.author.username }}</button>
                 <p>{{ post.content|truncatechars:100 }}</p>
                 <p class="text-right">
                     <a href="{% url 'post_detail' pk=post.id %}" class="btn btn-xs btn-success">댓글달기</a>
                 </p>
-
             </div>
             <div class="col-md-2"></div>
         </div>
-        {% endfor %}
-        {% include 'mywish/footer.html' %}
+        {% endfor %} {% include 'mywish/footer.html' %}
         <!-- Bootstrap core JavaScript -->
         <script
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
