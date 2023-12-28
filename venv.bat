@@ -1,2 +1,2 @@
 @echo off
-C:\Users\hi\Desktop\MyWish_frontend\venv\Scripts\activate
+C:\Users\hi\Desktop\MyWish\venv\Scripts\activate
