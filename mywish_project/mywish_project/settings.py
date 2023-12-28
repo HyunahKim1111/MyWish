@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mywish',
     # 로그인 앱추가
     'django.contrib.sites',
+    'disqus',
 ]
 
 # 장고 유저모델말고 커스텀 유저모델을 만들자
@@ -162,3 +163,6 @@ LOGIN_REDIRECT_URL = 'mypage'
 
 # 유투브 DATA API 인증 KEY
 YOUTUBE_DATA_API_KEY = 'AIzaSyCJnNoEtvpdbD61jen2NCdbbqQaMnPp7Zc'
+
+DISQUS_WEBSITE_SHORTNAME = 'mywish'
+SITE_ID = 1
