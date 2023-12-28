@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.urls import reverse
 
+
+#로그인
 class User(AbstractUser): 
     profile_img = models.ImageField(null=True, blank=True)
 
@@ -30,4 +32,14 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail', args=[self.id])
     
+# 마이위시 페이지
+class MyWish(models.Model):
+    wish_list = models.CharField(max_length=50)
 
+#인스턴스를 출력했을 때 만드는 내용
+    def __str__(self):
+        return "위시목록: " + self.wish_list
+    
+    # from django.urls import reverse 추가!
+    def get_absolute_url(self):
+        return reverse('my_wish', args=[str(self.id)]) # args=[(self.id)] 이렇게 들어가도 상관 없어

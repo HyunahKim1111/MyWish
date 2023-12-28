@@ -21,12 +21,18 @@
         <div id="wrap">
             <!-- 위시 추가 버튼 영역 -->
             <div class="plusIcon">
-                <img src="{% static 'mywish/images/plus-circle.svg' %}" alt="lightningIcon" />
+                <img src="{% static 'images/plus-circle.svg' %}" alt="lightningIcon" />
                 <p class="wishPlus">나의 위시로 등록하기</p>
             </div>
             <!-- 위시 추가 버튼 영역 -->
             <div id="container">
-                <img src="{% static 'mywish/images/zap.svg' %}" alt="lightningIcon" />
+                <img src="{% static 'images/zap.svg' %}" alt="lightningIcon" />
+                <div>
+                    {% for wish in object_list %}
+                    <p class="wishCon green">{{ wish.wish_list }}</p>
+                    <input type="checkbox" class="checkbox" />
+                    {% endfor %}
+                </div>
                 <div>
                     <p class="wishCon green">유럽여행</p>
 

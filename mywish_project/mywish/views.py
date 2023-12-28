@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, User
+from .models import Post, User, MyWish
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.urls import reverse_lazy
@@ -149,17 +149,16 @@ def youtube(request):
 # youtube API가져오기 https://developers.google.com/youtube/v3/docs/search/list
 
 # 마이위시 페이지
-def my_wish(request):
-    return render(request, 'mywish/my_wish.html')
+class MyWishListView(ListView):
+    model = MyWish
+    template_name = 'mywish/my_wish.html'
+
+# def my_wish(request):
+#     return render(request, 'mywish/my_wish.html')
+
+def mypage(request):
+    return render(request, 'mywish/mypage.html')
 
 # 메인페이지
 def index(request):
     return render(request, 'mywish/index.html')
-
-# 로그인 페이지
-def login(request):
-    return render(request, 'mywish/login.html')
-
-# 로그인 후 마이페이지
-def mypage(request):
-    return render(request, 'mywish/mypage.html')

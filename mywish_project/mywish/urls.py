@@ -10,15 +10,16 @@ urlpatterns = [
     path('post/detail/<int:pk>/', views.PostDetailView.as_view(), name='post_detail'), #포스트 상세페이지(댓글)
 
     path('content/', views.youtube, name='youtube'), # 나는될놈 페이지
-    path('my_wish/', views.my_wish, name='my_wish'), # 마이위시 페이지
+    # path('my_wish/', views.my_wish, name='my_wish'), # 마이위시 페이지
+    path('mywish/', views.MyWishListView.as_view(), name='my_wish'), # 마이위시 페이지
     
     # 로그인
-    path("login/", views.login_view, name="login"),
-    path("logout/", views.logout_view, name="logout"),
-    path("signup/", views.signup_view, name="signup"),
+    path("accounts/login/", views.login_view, name="login"),
+    path("accounts/logout/", views.logout_view, name="logout"),
+    path("accounts/signup/", views.signup_view, name="signup"),
 
     # 로그인 후 마이페이지
-    path('login/my_page/', views.mypage, name='mypage'), 
+    path('accounts/login/my_page/', views.mypage, name='mypage'), 
 
     path('', views.index, name='index'), # 메인
 ]

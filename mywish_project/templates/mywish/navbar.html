@@ -11,19 +11,19 @@
     <body>
         <div id="navWrap">
             <div class="navLogo">
-                <a href="#"> <img src="{% static '/images/logo.svg' %}" alt="logo" /></a>
+                <a href="/"> <img src="{% static '/images/logo.svg' %}" alt="logo" /></a>
             </div>
             <div class="navBtn1">
-                <img src="{% static '/images/star.svg' %}" alt="mywish-icon" /><a href="#">마이위시</a>
+                <img src="{% static '/images/star.svg' %}" alt="mywish-icon" /><a href="{% url 'my_wish' %}">마이위시</a>
             </div>
             <div class="navBtn2">
-                <img src="{% static '/images/fire.svg' %}" alt="fire-icon" /><a href="#">나는될놈</a>
+                <img src="{% static '/images/fire.svg' %}" alt="fire-icon" /><a href="{% url 'youtube' %}">나는될놈</a>
             </div>
             <div class="navBtn3">
-                <img src="{% static '/images/crown.svg' %}" alt="crown-icon" /><a href="#">도전달성</a>
+                <img src="{% static '/images/crown.svg' %}" alt="crown-icon" /><a href="{% url 'post_list' %}">도전달성</a>
             </div>
             <div class="navBtn4">
-                <img src="{% static '/images/user.svg' %}" alt="user-icon" /><a href="#">마이페이지</a>
+                <img src="{% static '/images/user.svg' %}" alt="user-icon" /><a href="{% url 'mypage' %}">로그인</a>
             </div>
         </div>
     </body>
