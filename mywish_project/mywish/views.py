@@ -1,14 +1,52 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, User, MyWish
+from .models import Post, User, MyWish, Todo
+from .forms import TodoForm
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
 
 import requests
 # duration 시간으로 보이기
 from isodate import parse_duration
 from django.conf import settings
+
+# 로그인 후 마이페이지(todo_list)
+def todo_index(request):
+    todo_list = Todo.objects.order_by('id')
+
+    form = TodoForm()
+    context = {'todo_list' : todo_list, 'form' : form}
+
+    return render(request, 'mywish/todolist.html', context)
+
+@require_POST
+def addTodo(request):
+    form = TodoForm(request.POST)
+
+    if form.is_valid():
+        new_todo = Todo(text=request.POST['text'])
+        new_todo.save()
+
+    return redirect('todo_list')
+
+def completeTodo(request, todo_id):
+    todo = Todo.objects.get(pk=todo_id)
+    todo.complete = True
+    todo.save()
+
+    return redirect('todo_list')
+
+def deleteCompleted(request):
+    Todo.objects.filter(complete__exact=True).delete()
+
+    return redirect('todo_list')
+
+def deleteAll(request):
+    Todo.objects.all().delete()
+
+    return redirect('todo_list')
 
 def login_view(request):
     if request.method == "POST":

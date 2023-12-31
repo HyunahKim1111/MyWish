@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, User, MyWish
+from .models import Post, User, MyWish, Todo
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'author', 'created_at', 'updated_at']
@@ -10,4 +10,5 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(User)
 admin.site.register(MyWish)
+admin.site.register(Todo)
 

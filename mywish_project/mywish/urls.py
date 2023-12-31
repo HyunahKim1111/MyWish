@@ -17,9 +17,15 @@ urlpatterns = [
     path("accounts/login/", views.login_view, name="login"),
     path("accounts/logout/", views.logout_view, name="logout"),
     path("accounts/signup/", views.signup_view, name="signup"),
+    path('accounts/login/todolist/', views.todo_index, name='todo_list'), # 로그인 후 마이페이지(todo_list)
+    path('accounts/login/todolist/add/', views.addTodo, name='add'), 
+    path('accounts/login/todolist/complete/<todo_id>/', views.completeTodo, name='complete'),
+    path('accounts/login/todolist/deletecomplete/', views.deleteCompleted, name='deletecomplete'),
+    path('accounts/login/todolist/deleteall/', views.deleteAll, name='deleteall'),
 
     # 로그인 후 마이페이지
     path('accounts/login/my_page/', views.mypage, name='mypage'), 
+    
 
     path('', views.index, name='index'), # 메인
 ]
