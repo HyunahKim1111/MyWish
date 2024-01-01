@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, User, MyWish, Todo
 from .forms import TodoForm
@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
+from django.views.generic.base import View # 좋아요 기능 구현
 
 import requests
 # duration 시간으로 보이기
@@ -58,6 +59,7 @@ def login_view(request):
         if user is not None:
             print("인증성공")
             auth_login(request ,user)
+            return redirect('mypage')# 마이페이지로 리디렉션
         else:
             print("인증실패")
     return render(request, "mywish/login.html")
@@ -190,6 +192,28 @@ def youtube(request):
 class MyWishListView(ListView):
     model = MyWish
     template_name = 'mywish/my_wish.html'
+
+def likes(request, pk):
+    if request.user.is_authenticated:
+        mywish = get_object_or_404(MyWish, pk=pk)
+
+        if mywish.like_users.filter(pk=request.user.pk).exists():
+            mywish.like_users.remove(request.user)
+        else:
+            mywish.like_users.add(request.user)
+        return redirect('my_wish')
+    return redirect('login')
+# from django.http import HttpResponseForbidden
+
+# class Likes(View):
+#     def get(self, request, *args, **kwargs):
+#         if not request.user.is_authenticated:
+#             return HttpResponseForbidden()
+#         else:
+#             if 'mywish_id' in kwargs:
+#                 mywish_id= kwargs['mywish_id']
+#                 wish = MyWish.objects.get(pk=mywish_id)
+#                 user = request.user
 
 # def my_wish(request):
 #     return render(request, 'mywish/my_wish.html')

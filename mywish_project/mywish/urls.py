@@ -10,8 +10,9 @@ urlpatterns = [
     path('post/detail/<int:pk>/', views.PostDetailView.as_view(), name='post_detail'), #포스트 상세페이지(댓글)
 
     path('content/', views.youtube, name='youtube'), # 나는될놈 페이지
-    # path('my_wish/', views.my_wish, name='my_wish'), # 마이위시 페이지
     path('mywish/', views.MyWishListView.as_view(), name='my_wish'), # 마이위시 페이지
+    path('mywish/<int:pk>/likes/', views.likes, name='likes'), # 좋아요
+    
     
     # 로그인
     path("accounts/login/", views.login_view, name="login"),

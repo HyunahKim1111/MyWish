@@ -27,19 +27,37 @@
             <!-- 위시 추가 버튼 영역 -->
             <div id="container">
                 <img src="{% static 'images/zap.svg' %}" alt="lightningIcon" />
+                
                 <div>
                     {% for wish in object_list %}
-                    <p class="wishCon green">{{ wish.wish_list }}</p>
-                    <input type="checkbox" class="checkbox" />
+                    <div>
+                        <p class="wishCon green">{{ wish.wish_list }}</p>
+                        <input type="checkbox" class="checkbox" />
+                        <!-- 좋아요 버튼추가 -->
+                        <form action="{% url 'likes' wish.pk %}" method="POST">
+                            {% csrf_token %}
+                            {% if request.user in wish.like_users.all %}
+                                <input type="submit" value="좋아요 취소">
+                            {% else %}
+                                <input type="submit" value="좋아요">
+                            {% endif %}
+                        </form>
+                        <!-- 좋아요 버튼 추가 끝 -->
+                    </div>
                     {% endfor %}
                 </div>
-                <div>
+                <!-- <div>
                     <p class="wishCon green">유럽여행</p>
 
                     <p class="wishCon">5:10pm – 6:10pm</p>
                 </div>
-                <input type="checkbox" class="checkbox" />
+                <input type="checkbox" class="checkbox" /> -->
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        
 {% endblock %}
 

@@ -1,52 +1,52 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-        <title>로그인 후 마이페이지</title>
-    </head>
-    <body>
-        <div class="mypage_wrap">
-            <div class="mypage_logo"></div>
-            <div class="profile">
-                <div class="profileFrame"></div>
-                <h3 class="user_greeting">반갑습니다 <span class="orange">{{ user.username }}</span> 님!</h3>
-            </div>
-            <span class="border"><hr /></span>
+{% extends 'base.html '%}
 
-            <h3 class="my_wish_list">마이 위시리스트</h3>
-            <div class="deleteBtn"><a class="delete" href="javascript:void(0)">삭제하기</a></div>
-            <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
-            <div id="container">
-                <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
-                <div>
-                    <p class="wishCon green">독서</p>
+    {% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <title>로그인 후 마이페이지</title>
+    {% endblock %}
 
-                    <p class="wishCon">5:10pm – 6:10pm</p>
-                </div>
-                <input type="checkbox" class="checkbox" />
-            </div>
-            <br />
-            <div id="container">
-                <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
-                <div>
-                    <p class="wishCon green">산책</p>
+{% block content %}
+<div class="mypage_wrap">
+    <div class="mypage_logo"></div>
+    <div class="profile">
+        <div class="profileFrame">{{ profile_img.url }}</div>
+        <!-- 프로필 이미지 작동이 안됨 추후 확인 필요. -->
+        <h3 class="user_greeting">반갑습니다 <span class="orange">{{ user.username }}</span> 님!</h3>
+    </div>
+    <span class="border"><hr /></span>
+    <!-- Todo List 추가 -->
+    <a href="{% url 'todo_list' %}"><button class="my_todo_list">My To Do List</button></a>
 
-                    <p class="wishCon">7:00pm – 8:30pm</p>
-                </div>
-                <input type="checkbox" class="checkbox" />
-            </div>
-            <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
-            <div class="mypageLogout">
-                <a href="{% url 'logout' %}">로그아웃</a>
-                &nbsp
-                <div class="bd">|</div>
-                &nbsp
-                <a href="javascript:void(0)">1:1 문의</a>
-            </div>
+    <h3 class="my_wish_list">마이 위시리스트</h3>
+    <div class="deleteBtn"><a class="delete" href="javascript:void(0)">삭제하기</a></div>
+    <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
+    <div id="container">
+        <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
+        <div>
+            <p class="wishCon green">독서</p>
+
+            <p class="wishCon">5:10pm – 6:10pm</p>
         </div>
-        {% include 'mywish/footer.html' %}
-    </body>
-</html>
+        <input type="checkbox" class="checkbox" />
+    </div>
+    <br />
+    <div id="container">
+        <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
+        <div>
+            <p class="wishCon green">산책</p>
+
+            <p class="wishCon">7:00pm – 8:30pm</p>
+        </div>
+        <input type="checkbox" class="checkbox" />
+    </div>
+    <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
+    <div class="mypageLogout">
+        <a href="{% url 'logout' %}">로그아웃</a>
+        &nbsp
+        <div class="bd">|</div>
+        &nbsp
+        <a href="javascript:void(0)">1:1 문의</a>
+    </div>
+</div>
+{% endblock %}

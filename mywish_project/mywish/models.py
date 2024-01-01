@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.urls import reverse
 
+# 할일 목록 리스트
 class Todo(models.Model):
     text = models.CharField(max_length=40)
     complete = models.BooleanField(default=False)
@@ -41,7 +42,9 @@ class Post(models.Model):
     
 # 마이위시 페이지
 class MyWish(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     wish_list = models.CharField(max_length=50)
+    like_users = models.ManyToManyField(User, related_name='like_wish', blank=True)
 
 #인스턴스를 출력했을 때 만드는 내용
     def __str__(self):
@@ -50,3 +53,4 @@ class MyWish(models.Model):
     # from django.urls import reverse 추가!
     def get_absolute_url(self):
         return reverse('my_wish', args=[str(self.id)]) # args=[(self.id)] 이렇게 들어가도 상관 없어
+    
