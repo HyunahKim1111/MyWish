@@ -22,7 +22,7 @@
             <!-- 위시 추가 버튼 영역 -->
             <div class="plusIcon">
                 <img src="{% static 'images/plus-circle.svg' %}" alt="lightningIcon" />
-                <p class="wishPlus">나의 위시로 등록하기</p>
+                <p class="wishPlus"><a href="{% url 'mypage' %}">나의 위시로 등록하기</a></p>
             </div>
             <!-- 위시 추가 버튼 영역 -->
             <div id="container">
@@ -31,8 +31,13 @@
                 <div>
                     {% for wish in object_list %}
                     <div>
-                        <p class="wishCon green">{{ wish.wish_list }}</p>
-                        <input type="checkbox" class="checkbox" />
+                        <form action="{% url 'checked_wish' wish.id %}" method="POST">
+                            {% csrf_token %}
+                                <div>
+                                    <p class="wishCon green">{{ wish.wish_list }}</p>
+                                    <input type="checkbox" name="checked_wish" value="{{ wish.id }}">
+                                </div>
+                        </form>
                         <!-- 좋아요 버튼추가 -->
                         <form action="{% url 'likes' wish.pk %}" method="POST">
                             {% csrf_token %}
@@ -45,19 +50,10 @@
                         <!-- 좋아요 버튼 추가 끝 -->
                     </div>
                     {% endfor %}
+                    <button class="btn btn-primary" type="submit">마이위시로 등록</button>
                 </div>
-                <!-- <div>
-                    <p class="wishCon green">유럽여행</p>
-
-                    <p class="wishCon">5:10pm – 6:10pm</p>
-                </div>
-                <input type="checkbox" class="checkbox" /> -->
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
         
 {% endblock %}
 

@@ -43,3 +43,38 @@
         </div>
     </body>
 </html>
+
+<!-- 먼저, '나의 위시로 등록하기' 버튼을 추가하고 선택된 위시들을 JavaScript로 가져온 뒤, 해당 위시들을 서버로 전송하여 마이페이지에 보여줄 것입니다. JavaScript를 사용하여 선택된 위시들의 ID를 배열에 저장하고, 이를 서버로 전송하여 Django 뷰에서 처리하겠습니다.  -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxList = document.querySelectorAll('.wishCheckbox');
+        const addButton = document.querySelector('.wishPlus');
+    
+        addButton.addEventListener('click', function() {
+            const checkedWishes = Array.from(checkboxList)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+    
+            // AJAX를 사용하여 선택된 위시들을 서버로 전송
+            fetch('/submit-wishes/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ wishes: checkedWishes })
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/mywish/'; // 마이페이지로 리다이렉트
+                } else {
+                    // 처리 실패 시의 로직
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // 오류 처리 로직
+            });
+        });
+    });
+    </script>
