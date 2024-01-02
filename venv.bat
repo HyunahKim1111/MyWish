@@ -1,4 +1,4 @@
 @echo off
 
-@REM C:\Users\hi\Desktop\MyWish\venv\Scripts\activate
-C:\bigdata\github\venv\Scripts\activate
+C:\Users\hi\Desktop\MyWish\venv\Scripts\activate
+@REM C:\bigdata\github\venv\Scripts\activate
