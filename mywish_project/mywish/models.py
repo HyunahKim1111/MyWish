@@ -36,6 +36,10 @@ class Post(models.Model):
 class MyWish(models.Model):
     wish_list = models.CharField(max_length=50)
 
+    class Meta:
+        verbose_name = 'mywish'
+        verbose_name_plural = 'mywishes'
+
 #인스턴스를 출력했을 때 만드는 내용
     def __str__(self):
         return "위시목록: " + self.wish_list
