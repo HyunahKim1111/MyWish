@@ -1,6 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.urls import reverse
+from django.conf import settings
+
+
+# 할일 목록 리스트
+class Todo(models.Model):
+    text = models.CharField(max_length=40)
+    complete = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.text
 
 
 #로그인
@@ -32,9 +42,30 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail', args=[self.id])
     
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.author}::{self.content}'
+    
+    def get_absolute_url(self):
+        return f'{self.post.get_absolute_url()}#comment-{self.pk}'
+    
+    
+# user
+# -> Post.objects.filter(user=user)
+#  -> user.post_set.all() 
 # 마이위시 페이지
 class MyWish(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True) # related_name='my_post_set', 
     wish_list = models.CharField(max_length=50)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_wish', blank=True) # related_name='like_post_set',
+    checked_wish = models.BooleanField(default=False)
+
 
     class Meta:
         verbose_name = 'mywish'
@@ -47,3 +78,5 @@ class MyWish(models.Model):
     # from django.urls import reverse 추가!
     def get_absolute_url(self):
         return reverse('my_wish', args=[str(self.id)]) # args=[(self.id)] 이렇게 들어가도 상관 없어
+    
+

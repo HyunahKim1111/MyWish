@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, User, MyWish
+from .models import Post, User, MyWish, Todo,Comment
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'author', 'created_at', 'updated_at']
@@ -8,6 +8,9 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['content', 'created_at','author__username']
     ordering = ['-updated_at', '-created_at']
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment)
 admin.site.register(User)
 admin.site.register(MyWish)
+admin.site.register(Todo)
+
 

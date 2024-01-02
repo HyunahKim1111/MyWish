@@ -1,0 +1,112 @@
+{% extends 'base.html '%}
+
+    {% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <title>로그인 후 마이페이지</title>
+    {% endblock %}
+
+{% block content %}
+<div class="mypage_wrap">
+    <div class="mypage_logo"></div>
+    <div class="profile">
+        <div class="profileFrame">{{ profile_img.url }}</div>
+        <!-- 프로필 이미지 작동이 안됨 추후 확인 필요. -->
+        <h3 class="user_greeting">반갑습니다 <span class="orange">{{ user.username }}</span> 님!</h3>
+    </div>
+    <span class="border"><hr /></span>
+    <!-- Todo List 추가 -->
+    <a href="{% url 'todo_list' %}"><button class="my_todo_list">My To Do List</button></a>
+
+    <h3 class="my_wish_list">마이 위시리스트</h3>
+    <div class="deleteBtn"><a class="delete" href="javascript:void(0)">삭제하기</a></div>
+    <!-- 체크한 컨텐츠들 backend -->
+    <div class="checked_wishes">
+        {% for wish in checked_wishes %}
+        <div>
+            <input type="checkbox" class="checkbox" {% if wish.checked_wish %} checked {% endif %}>
+            <label>{{ wish.wish_list }}</label>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- 체크한 컨텐츠들 end -->
+
+    <!-- 선택한 위시들을 배열로 저장하고, 해당 배열을 서버로 전송하는 JavaScript 코드 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const deleteBtn = document.querySelector('.delete');
+            const wishesToDelete = [];
+    
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        wishesToDelete.push(this.value); // 위시 ID를 배열에 추가
+                    } else {
+                        const index = wishesToDelete.indexOf(this.value);
+                        if (index > -1) {
+                            wishesToDelete.splice(index, 1); // 선택 해제된 경우 배열에서 제거
+                        }
+                    }
+                });
+            });
+    
+            deleteBtn.addEventListener('click', function() {
+                // AJAX를 사용하여 선택된 위시들을 서버로 전송
+                fetch('/submit-wishes/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}' // 이 부분은 템플릿에서 실제 토큰을 받아서 처리해야 합니다.
+                    },
+                    body: JSON.stringify({ wishes: wishesToDelete })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // 처리 성공 시의 로직
+                        window.location.href = '/mywish/'; // 마이페이지로 리다이렉트
+                    } else {
+                        // 처리 실패 시의 로직
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // 오류 처리 로직
+                });
+            });
+        });
+    </script>
+    
+    <!-- 코드 end -->
+    
+    <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
+
+    <div id="container">
+        <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
+        <div>
+            <p class="wishCon green">독서</p>
+
+            <p class="wishCon">5:10pm – 6:10pm</p>
+        </div>
+        <input type="checkbox" class="checkbox" />
+    </div>
+    <br />
+    <div id="container">
+        <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
+        <div>
+            <p class="wishCon green">산책</p>
+
+            <p class="wishCon">7:00pm – 8:30pm</p>
+        </div>
+        <input type="checkbox" class="checkbox" />
+    </div>
+    <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
+    <div class="mypageLogout">
+        <a href="{% url 'logout' %}">로그아웃</a>
+        &nbsp
+        <div class="bd">|</div>
+        &nbsp
+        <a href="javascript:void(0)">1:1 문의</a>
+    </div>
+</div>
+{% endblock %}

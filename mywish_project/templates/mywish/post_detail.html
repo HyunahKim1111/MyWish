@@ -1,27 +1,57 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block css %}
 {% load static %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>{{object.content|truncatechars:10}}</title>
         <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen" />
-    </head>
-    <body>
+{% endblock%}
+
+{% block content %}
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 panel panel-default">
                 <p><img src="{{ object.head_image.url }}" style="width: 50%" alt="" /></p>
                 <button type="button" class="btn btn-xs btn-info">{{ object.author.username }}</button>
-                <p>{{ post.content|linebreaksbr }}</p>
-                <a href="{% url 'post_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right"
-                    >Delete</a
-                >
-                <a href="{% url 'post_update' pk=object.id %}" class="btn btn-outline-success btn-sm float-right"
-                    >Update</a
-                >
+                <p>{{ post.content|linebreaksbr }}
+                    <a href="{% url 'post_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right"
+                    >삭제하기</a>
+                    <a href="{% url 'post_update' pk=object.id %}" class="btn btn-outline-success btn-sm float-right"
+                        >수정하기</a>
+                </p>
+            <hr/>
+            <!-- 댓글1 -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                    <form id="comment-form" method="POST" action="{{ post.get_absolute_url}}new_comment/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    {% else %}
+                        <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="#" >로그인 해 주세요</a>
+                    {% endif %}
+                </div>
             </div>
+            <!-- 댓글관련2 -->
+            {% if post.comment_set.exists %}
+                {% for comment in post.comment_set.iterator %}
+                    <div class="media mb-4" id="comment-{{ comment.pk }}">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ comment.author.username }} &nbsp;&nbsp;<small class="text-muted">
+                                {{ comment.created_at }}</small>
+                            </h5>
+                            <p>{{ comment.content | linebreaks }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <!-- 댓글관련2end  -->
             <div class="col-md-2"></div>
         </div>
     </body>
-</html>
+{% endblock %}
