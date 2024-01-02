@@ -14,12 +14,11 @@
             <!-- 유저가 로그인 성공한 상황 -->
                     <h3 class="user_greeting">반갑습니다 <span class="orange">{{ user.username }}</span> 님!</h3>
                 <span class="border"><hr /></span>
-
-                <a href="{% url 'todo_list' %}"><button class="my_todo_list">My To Do List</button></a>
-                    <h3 class="my_wish_list">마이 위시리스트</h3>
-                <div class="deleteBtn"><a class="delete" href="javascript:void(0)">삭제하기</a></div>
+                    <h3 class="my_wish_list"><a href="{% url 'todo_list' %}">할일 목록 리스트로 가기</a></h3>
+                    
+                <!-- <div class="deleteBtn"><a class="delete" href="javascript:void(0)">삭제하기</a></div> -->
                 <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
-                <div id="container">
+                <!-- <div id="container">
                     <img src="{% static 'images/lightning.svg' %}" alt="lightningIcon" />
                     <div>
                         <p class="wishCon green">독서</p>
@@ -37,7 +36,7 @@
                         <p class="wishCon">7:00pm – 8:30pm</p>
                     </div>
                     <input type="checkbox" class="checkbox" />
-                </div>
+                </div> -->
                 <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
                 <div class="mypageLogout">
                     <a href="{% url 'logout' %}">로그아웃</a>

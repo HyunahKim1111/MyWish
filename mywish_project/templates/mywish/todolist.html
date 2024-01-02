@@ -55,11 +55,9 @@
 							{% endif %}
 						{% endfor %}
 					</ul>
-                    <div class="btn-group">
-                        <a href="{% url 'mypage' %}"><button type="button" class="btn btn-warning">
-                             마이 위시 목록으로 돌아가기
-                        </button></a>
-                    </div>
+					<div class="mypageLogout">
+						<a href="{% url 'logout' %}">로그아웃</a>
+					</div>
 				</div>
 			</div>
 		</div>

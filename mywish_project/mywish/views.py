@@ -62,7 +62,7 @@ def login_view(request):
         if user is not None:
             print("인증성공")
             auth_login(request ,user)
-            return redirect('mypage')# 마이페이지로 리디렉션
+            return redirect('todo_list')# 마이페이지로 리디렉션
         else:
             print("인증실패")
     return render(request, "mywish/login.html")

@@ -155,7 +155,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'django.contrib.auth.backends.ModelBackend',
 # ]
 
-LOGIN_REDIRECT_URL = 'mypage_view'
+LOGIN_REDIRECT_URL = 'todo_list'
 # 로그아웃 후 리디렉션할 페이지
 # ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 # 로그아웃 버튼 클릭 시 자동 로그아웃
