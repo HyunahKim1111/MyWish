@@ -1,5 +1,12 @@
 {% extends 'base.html' %} {% block css %} {% load static %}
 <title>mywish페이지</title>
+<!-- Bootstrap core CSS -->
+<link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+/>
 <!-- 
 <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" /> -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -88,8 +95,8 @@
     }
     #register {
         position: absolute;
-        top: 200px;
-        right: 200px;
+        top: 235px;
+        right: 430px;
         justify-content: center;
         text-align: center;
         margin: 0 auto;
@@ -99,7 +106,7 @@
     <!-- 위시 추가 버튼 영역 -->
     <div class="plusIcon">
         <img src="{% static 'images/plus-circle.svg' %}" alt="lightningIcon" />
-        <p class="wishPlus"><a href="{% url 'mypage' %}">나의 위시로 등록하기</a></p>
+        <a href="{% url 'mypage' %}" class="wishPlus">나의 위시로 등록하기</a>
     </div>
     <!-- 위시 추가 버튼 영역 -->
     <div id="container">
@@ -133,7 +140,12 @@
                     {% csrf_token %} {% if request.user in wish.like_users.all %}
                     <input type="submit" value="좋아요 취소" style="padding: 10px" />
                     {% else %}
-                    <input type="submit" value="좋아요" style="padding: 10px" />
+                    <input
+                        type="submit"
+                        value="좋아요"
+                        style="padding: 10px"
+                        class="btn btn-outline-danger btn-sm float-right"
+                    />
                     {% endif %}
                 </form>
                 <!-- 좋아요 버튼 추가 끝 -->
@@ -141,7 +153,7 @@
             {% endfor %}
         </div>
     </div>
-    <button class="btn btn-primary" type="submit" id="register">마이위시로 등록</button>
+    <button class="btn btn-outline-success btn-sm float-right" type="submit" id="register">마이위시로 등록</button>
 </div>
 
 {% endblock %}

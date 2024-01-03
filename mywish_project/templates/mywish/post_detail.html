@@ -10,12 +10,12 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 panel panel-default">
-                <p><img src="{{ object.head_image.url }}" style="width: 50%" alt="" /></p>
+                <p><img src="{{ object.head_image.url }}" style="width: 50%; display: block; align-items: center; margin:50px auto;" alt="웰시코기" /></p>
                 <button type="button" class="btn btn-xs btn-info">{{ object.author.username }}</button>
                 <p>{{ post.content|linebreaksbr }}
                     <a href="{% url 'post_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right"
                     >삭제하기</a>
-                    <a href="{% url 'post_update' pk=object.id %}" class="btn btn-outline-success btn-sm float-right"
+                    <a href="{% url 'post_update' pk=object.id %}" class="btn btn-outline-success btn-sm float-right" style="margin-right: 10px;"
                         >수정하기</a>
                 </p>
             <hr/>

@@ -1,18 +1,49 @@
 {% extends 'base.html' %} {% block css%} {% load static %}
 <title>포스트 목록 페이지_도전달성 목록</title>
-<!-- <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen" /> -->
+
+<!-- Bootstrap core CSS -->
+<link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+/>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        list-style: none;
+    }
+    body {
+        min-width: 320px;
+        min-height: 480px;
+    }
+    #wrap {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
 {% endblock %} {% block content %} {% for post in posts %}
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8 panel panel-default">
-        <p><img src="{{ post.head_image.url }}" style="width: 50%" alt="" /></p>
-        <button type="button" class="btn btn-xs btn-info">{{ post.author.username }}</button>
-        <p>{{ post.content|truncatechars:100 }}</p>
-        <p class="text-right">
-            <a href="{% url 'post_detail' pk=post.id %}" class="btn btn-xs btn-success">댓글달기</a>
-        </p>
+<div id="wrap">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <p><img src="{{ post.head_image.url }}" style="width: 50%" alt="" /></p>
+            <button type="button" class="btn btn-xs btn-info">{{ post.author.username }}</button>
+            <p>{{ post.content|truncatechars:100 }}</p>
+            <p class="text-right">
+                <a href="{% url 'post_detail' pk=post.id %}" class="btn btn-xs btn-success">댓글달기</a>
+            </p>
+        </div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-2"></div>
 </div>
 {% endfor %}
 <!-- Bootstrap core JavaScript -->

@@ -8,6 +8,23 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 
         <title>메인페이지</title>
+        <style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        list-style: none;
+    }
+    body {
+        min-width: 320px;
+        min-height: 480px;
+    }
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
     </head>
     <body>
         {% include 'mywish/navbar.html'%}

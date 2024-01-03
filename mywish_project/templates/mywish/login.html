@@ -3,6 +3,13 @@
 {% block css%}
 {% load static %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+        <!-- Bootstrap core CSS -->
+<!-- <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+/> -->
         <title>로그인페이지</title>
 {% endblock %}
 
@@ -52,7 +59,7 @@
                 {% csrf_token %}
                 <!-- csrfmiddlewaretoken은 토큰 를 통해서 들어가는 key -->
                 <div class="login-profile"><img src="{% static 'images/login-icon.svg' %}" alt="empty-profile" /></div>
-                <p>로그인해주세요</p>
+                <p style="padding: 15px;">로그인해주세요</p>
                 <input name="username" type="text" id="id-input" />
                 <input name="password" type="password" id="passwordBar" />
                 <input type="submit" id="loginBar" value="로그인" />
