@@ -5,32 +5,72 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{% static '/css/base.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" type="text/css" />
         {% block css %}{% endblock %}
     </head>
+     <style>
+            #navWrap {
+                width: 100%;
+                height: 85px;
+                display: flex;
+                box-sizing: border-box;
+                background: #fff;
+                justify-content: space-around;
+                align-items: center;
+                position: relative;
+            }
+            .navLogo {
+                margin: 0 60px 0 60px;
+            }
+            .navLogo img {
+                width: 92px;
+                margin: 18px 0 0 0;
+                padding: 15px;
+            }
+            .navBtn {
+                padding: 18px 50px 0 0;
+                text-align: center;
+                display: block;
+            }
+
+            .navBtn img {
+                display: block;
+                margin-left: 15px;
+                text-align: center;
+            }
+        </style>
     <body>
         <!-- 네이베이션 -->
-        <div id="navWrap">
+            <div id="navWrap">
             <div class="navLogo">
                 <a href="/"> <img src="{% static '/images/logo.svg' %}" alt="logo" /></a>
             </div>
-            <div class="navBtn1">
-                <img src="{% static '/images/star.svg' %}" alt="mywish-icon" /><a href="{% url 'my_wish'%}">마이위시</a>
+            <div class="navBtn">
+                <a href="{% url 'my_wish' %}"
+                    ><img src="{% static '/images/star.svg' %}" alt="mywish-icon" />마이위시</a
+                >
             </div>
-            <div class="navBtn2">
-                <img src="{% static '/images/fire.svg' %}" alt="fire-icon" /><a href="{%url 'youtube' %}">나는될놈</a>
+            <div class="navBtn">
+                <a href="{% url 'youtube' %}" style="text-align: center"
+                    ><img src="{% static '/images/fire.svg' %}" alt="fire-icon" />나는될놈</a
+                >
             </div>
-            <div class="navBtn3">
-                <img src="{% static '/images/crown.svg' %}" alt="crown-icon" /><a href="{%url 'post_list' %}">도전달성</a>
+            <div class="navBtn">
+                <a href="{% url 'post_list' %}">
+                    <img src="{% static '/images/crown.svg' %}" alt="crown-icon" />도전달성</a
+                >
             </div>
-            <div class="navBtn4">
-                <img src="{% static '/images/user.svg' %}" alt="user-icon" /><a href="{%url 'login' %}">마이페이지</a>
+            <div class="navBtn">
+                <a href="{% url 'login' %}" 
+                    ><img src="{% static '/images/user.svg' %}" alt="user-icon" />마이페이지</a
+                >
             </div>
         </div>
+    </body>
+</html>
         <!-- 네이게이션 끝 -->
 
-        {% block content %}
-        {% endblock %}
+        {% block content %} {% endblock %}
 
         <!-- 풋터 시작 -->
         <div id="foot-wrap">
@@ -48,9 +88,8 @@
             </div>
             <div class="family-site">
                 <select name="family" id="family">
-                    <option value="#">패밀리 사이트1</option>
-                    <option value="#">패밀리 사이트2</option>
-                    <option value="#">패밀리 사이트3</option>
+                    <option value="#">문의 및 제안</option>
+                    <option value="#">dnd5669@gmail.com</option>
                 </select>
             </div>
         </div>
