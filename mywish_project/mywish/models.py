@@ -42,6 +42,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail', args=[self.id])
     
+ # 댓글    
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -55,28 +56,23 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return f'{self.post.get_absolute_url()}#comment-{self.pk}'
     
-    
-# user
-# -> Post.objects.filter(user=user)
-#  -> user.post_set.all() 
 # 마이위시 페이지
 class MyWish(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True) # related_name='my_post_set', 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True) 
     wish_list = models.CharField(max_length=50)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_wish', blank=True) # related_name='like_post_set',
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_wish', blank=True) 
     checked_wish = models.BooleanField(default=False)
-
 
     class Meta:
         verbose_name = 'mywish'
         verbose_name_plural = 'mywishes'
 
-#인스턴스를 출력했을 때 만드는 내용
+    #인스턴스를 출력했을 때 만드는 내용
     def __str__(self):
         return "위시목록: " + self.wish_list
     
     # from django.urls import reverse 추가!
     def get_absolute_url(self):
-        return reverse('my_wish', args=[str(self.id)]) # args=[(self.id)] 이렇게 들어가도 상관 없어
+        return reverse('my_wish', args=[str(self.id)]) 
     
 
