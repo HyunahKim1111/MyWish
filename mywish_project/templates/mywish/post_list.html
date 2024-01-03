@@ -31,6 +31,7 @@
     }
 </style>
 {% endblock %} {% block content %} {% for post in posts %}
+<<<<<<< HEAD
 <div id="wrap">
     <div class="row">
         <div class="col-md-2"></div>
@@ -43,6 +44,21 @@
             </p>
         </div>
         <div class="col-md-2"></div>
+=======
+<div class="row">
+    <div class="col-md-2">
+        <p class="text-left">
+            <a href="{% url 'post_upload' %}" class="btn btn-xs btn-success">글쓰기</a>
+        </p>
+    </div>
+    <div class="col-md-8 panel panel-default">
+        <p><img src="{{ post.head_image.url }}" style="width: 50%" alt="" /></p>
+        <button type="button" class="btn btn-xs btn-info">{{ post.author.username }}</button>
+        <p>{{ post.content|truncatechars:100 }}</p>
+        <p class="text-right">
+            <a href="{% url 'post_detail' pk=post.id %}" class="btn btn-xs btn-success">댓글달기</a>
+        </p>
+>>>>>>> a0f9c7176f8b26fed3c5d60ab411c2b94366142d
     </div>
 </div>
 {% endfor %}
