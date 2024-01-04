@@ -136,15 +136,17 @@
                     </div>
                 </form>
                 <!-- 좋아요 버튼추가 -->
-                <form action="{% url 'likes' wish.pk %}" method="POST" id="like">
-                    {% csrf_token %} {% if request.user in wish.like_users.all %}
+                <form action="{% url 'likes' wish.pk %}" method="POST" class="like-form">
+                    {% csrf_token %}
+                    {% if request.user in wish.like_users.all %}
                     <input type="submit" value="좋아요 취소" style="padding: 10px" />
                     {% else %}
                     <input
                         type="submit"
                         value="좋아요"
                         style="padding: 10px"
-                        class="btn btn-outline-danger btn-sm float-right"
+                        class="btn btn-outline-danger btn-sm like-btn"
+                        data-wish-id="{{ wish.pk }}"
                     />
                     {% endif %}
                 </form>
