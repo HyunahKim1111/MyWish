@@ -1,12 +1,14 @@
-{% extends 'base.html '%}
-
-    {% block css %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-    <title>로그인 후 마이페이지</title>
-    {% endblock %}
-
-{% block content %}
+{% extends 'base.html '%} {% block css %} {% load static %}
+<!-- Bootstrap core CSS -->
+<link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+<title>로그인 후 마이페이지</title>
+{% endblock %} {% block content %}
 <div class="mypage_wrap">
     <div class="mypage_logo"></div>
     <div class="profile">
@@ -22,15 +24,10 @@
     <div class="deleteBtn"><a class="delete" href="javascript:void(0)">삭제하기</a></div>
     <!-- 체크한 컨텐츠들 backend -->
     <div class="checked_wishes">
-        {% for wish in wishlist %}
-            {% if wish.checked_wish is True %}
-                {{ wish.wish_list}}
-            {% endif %}
-        {% endfor %}
+        {% for wish in wishlist %} {% if wish.checked_wish is True %} {{ wish.wish_list}} {% endif %} {% endfor %}
     </div>
     <!-- 체크한 컨텐츠들 end -->
 
-    
     <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
 
     <!-- 마이위시 페이지에서 담은 컨텐츠 들어올 자리 -->
